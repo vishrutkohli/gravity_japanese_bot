@@ -83,9 +83,10 @@ class MyChatBotView(generic.View):
 					reply = natural_text(sender_id , message_text)
 					
 					post_facebook_message(sender_id, reply['text'])
+					print "hihihihihhi"  + str(reply['quickreplies'])
 
 					quickreply = json.dumps(reply['quickreplies'])
-					print quickreply
+					print "hihihihihhi"  + quickreply
 					post_facebook_message(sender_id,quickreply )
 
 
