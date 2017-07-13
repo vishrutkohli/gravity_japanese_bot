@@ -80,9 +80,9 @@ class MyChatBotView(generic.View):
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
-					# reply = natural_text(message_text)
+					reply = natural_text(message_text)
 					
-					# post_facebook_message(sender_id, reply)
+					post_facebook_message(sender_id, reply)
 
 
 							
