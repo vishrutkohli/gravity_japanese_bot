@@ -14,9 +14,27 @@ def natural_text(text):
 
 	## Parsing the response 
 	response = json.loads(textRequest.getresponse().read().decode('utf-8'))
-	print response
+	# print response
 	print "hihihihihi"
-	reply = response['result']['fulfillment']['speech']
-	# print reply
+	text = response['result']['fulfillment']['speech']
+	reply = {"text":text}
+	try:
+		quickreply = response['result']['fulfillment']['messages']['payload']
 
+		response_object =   {
+                          "recipient":{
+                            "id":fbid
+                          },
+                          "message":quickreply
+                        }
+
+        quickreplies  = json.dumps(response_object)
+
+        reply.update({"quickreplies" : quickreplies})
+
+    except Exception as e:
+                    print e
+                    pass
+    
+    print reply
 	return reply
