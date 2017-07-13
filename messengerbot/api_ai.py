@@ -17,8 +17,8 @@ def natural_text(sender_id,text):
     print response
     print "hihihihihi"
     try:
-    text = response['result']['fulfillment']['speech']
-    reply = {"text":text}
+        text = response['result']['fulfillment']['speech']
+        reply = {"text":text}
     
         quickreply = response['result']['fulfillment']['messages'][0]['payload']
 
