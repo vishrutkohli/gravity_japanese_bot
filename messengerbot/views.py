@@ -9,7 +9,34 @@ import json
 import requests
 from api_ai import natural_text
 
-# activation("shipment")
+
+#api.ai webhook integration
+@csrf_exempt
+def api_ai_webhook(request):
+	# Create your views here.
+
+
+	try:
+		########################### EITHER YOU WILL HAVE YOUR POST REQUEST DATA IN REQUEST.BODY AND REQUEST.POST FROM WHERE YOU CAN PARSE it #######
+		# print request.body
+		x = json.loads(request.body)
+		print request.body
+		print json.loads(request.body)
+
+		
+
+		
+		
+
+
+
+
+			
+	except Exception as e:
+		print e
+		return HttpResponse(e)
+	return HttpResponse("Post Succcessful")
+
 
 # Create your views here.
 
@@ -17,6 +44,11 @@ VERIFY_TOKEN = 'dhlchatbot'  #verify token for facebook webhook
 
 # Our facebook page acces token 
 PAGE_ACCESS_TOKEN = 'EAAGW93sNgsgBAKn6MeSmLHQQBrSFoJZBa3ZCpAZBiSDxMLXshNd7PK1dRSDO1XH4dZBnfBsZBPxsAwh9BNzHKy94aHPaL4WoqdxYvWovstiYleJZC09FEkOoenAFoWxss5NLyXGdcPz1VI46OaEW5LlTZApVlnwFzfF3nGl1wW5tgZDZD'
+
+
+
+
+
 
 #Function to invoke the facebook API to 
 def post_facebook_message(fbid,message_text):
