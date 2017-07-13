@@ -55,6 +55,23 @@ ROOT_URLCONF = 'DHLchatbot.urls'
 WSGI_APPLICATION = 'DHLchatbot.wsgi.application'
 
 
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+
+TEMPLATE_DIRS = (
+    TEMPLATE_PATH,
+)
+
+STATIC_ROOT = 'staticfiles'
+STATIC_PATH = os.path.join(BASE_DIR,'static')
+
+STATIC_URL = '/static/' 
+
+STATICFILES_DIRS = (
+    STATIC_PATH,
+)
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 

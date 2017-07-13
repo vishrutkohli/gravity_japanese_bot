@@ -1,6 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.shortcuts import render
 from django.http import HttpResponse
 import urllib2
@@ -9,6 +7,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 import json
 import requests
+from api_ai import natural_text
+
+# activation("shipment")
 
 # Create your views here.
 
@@ -17,6 +18,7 @@ VERIFY_TOKEN = 'dhlchatbot'  #verify token for facebook webhook
 # Our facebook page acces token 
 PAGE_ACCESS_TOKEN = 'EAAGW93sNgsgBAKn6MeSmLHQQBrSFoJZBa3ZCpAZBiSDxMLXshNd7PK1dRSDO1XH4dZBnfBsZBPxsAwh9BNzHKy94aHPaL4WoqdxYvWovstiYleJZC09FEkOoenAFoWxss5NLyXGdcPz1VI46OaEW5LlTZApVlnwFzfF3nGl1wW5tgZDZD'
 
+#Function to invoke the facebook API to 
 def post_facebook_message(fbid,message_text):
 	post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
 	response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
@@ -45,8 +47,9 @@ class MyChatBotView(generic.View):
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
+					reply = natural_text(message_text)
 					
-					post_facebook_message(sender_id, message_text)
+					post_facebook_message(sender_id, reply)
 
 
 							
