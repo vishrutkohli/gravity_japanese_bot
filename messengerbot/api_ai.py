@@ -14,7 +14,7 @@ def natural_text(sender_id,text):
 
     ## Parsing the response 
     response = json.loads(textRequest.getresponse().read().decode('utf-8'))
-    # print response
+    print response
     print "hihihihihi"
     try:
     text = response['result']['fulfillment']['speech']
