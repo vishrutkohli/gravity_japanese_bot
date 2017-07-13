@@ -93,9 +93,9 @@ class MyChatBotView(generic.View):
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
 					reply = natural_text(sender_id , message_text)
-					
-					post_facebook_message(sender_id, reply['text'])
 					print "yoyoyoyyo"  + str(reply['quickreplies'])
+					post_facebook_message(sender_id, reply['text'])
+					
 					post_facebook_message(sender_id,reply['quickreplies'])
 
 
