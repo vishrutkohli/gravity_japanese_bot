@@ -12,7 +12,9 @@ import requests
 
 # Create your views here.
 
-VERIFY_TOKEN = 'dhlchatbot'
+VERIFY_TOKEN = 'dhlchatbot'  #verify token for facebook webhook
+
+# Our facebook page acces token 
 PAGE_ACCESS_TOKEN = 'EAAGW93sNgsgBAKn6MeSmLHQQBrSFoJZBa3ZCpAZBiSDxMLXshNd7PK1dRSDO1XH4dZBnfBsZBPxsAwh9BNzHKy94aHPaL4WoqdxYvWovstiYleJZC09FEkOoenAFoWxss5NLyXGdcPz1VI46OaEW5LlTZApVlnwFzfF3nGl1wW5tgZDZD'
 
 def post_facebook_message(fbid,message_text):
