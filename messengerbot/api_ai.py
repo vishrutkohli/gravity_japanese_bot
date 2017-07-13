@@ -19,7 +19,7 @@ def natural_text(sender_id,text):
     text = response['result']['fulfillment']['speech']
     reply = {"text":text}
     try:
-        quickreply = response['result']['fulfillment']['messages']['payload']
+        quickreply = response['result']['fulfillment']['messages'][0]['payload']
 
         response_object =   {
                           "recipient":{
@@ -29,7 +29,7 @@ def natural_text(sender_id,text):
                         }
 
         # quickreplies  = json.dumps(response_object)
-        
+
 
         reply.update({"quickreplies" : response_object})
 
@@ -37,5 +37,5 @@ def natural_text(sender_id,text):
                     print e
                     pass
     
-    print reply
+    print "this is reply" + str(reply)
     return reply
