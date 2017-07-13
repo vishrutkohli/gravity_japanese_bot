@@ -75,6 +75,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(default=b'NULL', max_length=250)),
                 ('timezone', models.CharField(default=b'NULL', max_length=250)),
+                ('country', models.ForeignKey(to='messengerbot.country')),
+                ('languages', models.ManyToManyField(to='messengerbot.language', null=True)),
             ],
             options={
             },
@@ -84,7 +86,7 @@ class Migration(migrations.Migration):
             name='status',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('timestamp', models.CharField(default=b'NULL', max_length=250)),
+                ('timestamp', models.DateTimeField(null=True, blank=True)),
                 ('location', models.CharField(default=b'NULL', max_length=250)),
             ],
             options={
@@ -158,18 +160,6 @@ class Migration(migrations.Migration):
             model_name='status',
             name='status',
             field=models.ForeignKey(related_name=b'statusMessage', to='messengerbot.statusCode'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='place',
-            name='country',
-            field=models.ForeignKey(to='messengerbot.typeOfShipment'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='place',
-            name='languages',
-            field=models.ManyToManyField(to='messengerbot.language', null=True),
             preserve_default=True,
         ),
         migrations.AddField(
