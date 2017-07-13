@@ -19,6 +19,7 @@ def api_ai_webhook(request):
 	try:
 		########################### EITHER YOU WILL HAVE YOUR POST REQUEST DATA IN REQUEST.BODY AND REQUEST.POST FROM WHERE YOU CAN PARSE it #######
 		# print request.body
+		print "hihihihihihihihihihihihihii"
 		x = json.loads(request.body)
 		print request.body
 		print json.loads(request.body)
@@ -79,7 +80,7 @@ class MyChatBotView(generic.View):
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
-					reply = natural_text(message_text)
+					# reply = natural_text(message_text)
 					
 					post_facebook_message(sender_id, reply)
 
