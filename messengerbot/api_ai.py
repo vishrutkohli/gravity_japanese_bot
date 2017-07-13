@@ -2,7 +2,7 @@ import apiai as ai
 import json 
 ## This is the token you can obtain from your app's dashboard
 
-def natural_text(text):
+def natural_text(sender_id,text):
 	CLIENT_ACCESS_TOKEN="518b8c00e75d4739aa323e631c8cbc1b"
 
 	## instantiate an api.ai parser object 
@@ -23,7 +23,7 @@ def natural_text(text):
 
 		response_object =   {
                           "recipient":{
-                            "id":fbid
+                            "id":sender_id
                           },
                           "message":quickreply
                         }
