@@ -99,9 +99,22 @@ class MyChatBotView(generic.View):
 					reply = natural_text(sender_id , message_text)
 					print "blah blah" + str(reply['text'])
 					print "yoyoyoyyo"  + str(reply['quickreplies'])
-					post_facebook_message(sender_id, reply['text'])
+
+
+					try:
+						post_facebook_message(sender_id, reply['text'])
+
+					except Exception as e:
+					print e
+					pass
 					
-					post_facebook_message(sender_id,reply['quickreplies'])
+					try:	
+					
+						post_facebook_message(sender_id,reply['quickreplies'])
+
+					except Exception as e:
+					print e
+					pass	
 
 
 						 
