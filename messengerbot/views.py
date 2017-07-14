@@ -56,6 +56,8 @@ def post_facebook_message(fbid,message_text):
 	post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
 	try:
 		response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
+		status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+		print status.json()
 	except Exception as e:
 		
 		print e
@@ -63,12 +65,13 @@ def post_facebook_message(fbid,message_text):
 
 	try:
 		response_msg = json.dumps(message_text)
+		status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+		print status.json()
 	except Exception as e:
 		
 		print e
 		pass		
-	status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-	print status.json()
+	
 
 
 class MyChatBotView(generic.View):
