@@ -16,11 +16,12 @@ def natural_text(sender_id,text):
     response = json.loads(textRequest.getresponse().read().decode('utf-8'))
     print response
     print "hihihihihi"
-    try:
-        text = response['result']['fulfillment']['speech']
-        reply = {"text":text}
     
-        quickreply = response['result']['fulfillment']['messages'][0]['payload']
+    text = response['result']['fulfillment']['speech']
+    reply = {"text":text}
+    try:
+
+        quickreply = response['result']['fulfillment']['messages'][1]['payload']
 
         response_object =   {
                           "recipient":{
