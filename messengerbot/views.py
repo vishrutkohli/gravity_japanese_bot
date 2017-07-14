@@ -97,11 +97,12 @@ class MyChatBotView(generic.View):
 					message_text = message['message']['text']
 					print "just going to  invoke natural_text"
 					reply = natural_text(sender_id , message_text)
-					print "blah blah" + str(reply['text'])
-					print "yoyoyoyyo"  + str(reply['quickreplies'])
+					
+					
 
 
 					try:
+						print "blah blah" + str(reply['text'])
 						post_facebook_message(sender_id, reply['text'])
 
 					except Exception as e:
@@ -109,7 +110,7 @@ class MyChatBotView(generic.View):
 						pass
 					
 					try:	
-					
+						print "yoyoyoyyo"  + str(reply['quickreplies'])
 						post_facebook_message(sender_id,reply['quickreplies'])
 
 					except Exception as e:
