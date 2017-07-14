@@ -105,16 +105,16 @@ class MyChatBotView(generic.View):
 						post_facebook_message(sender_id, reply['text'])
 
 					except Exception as e:
-					print e
-					pass
+						print e
+						pass
 					
 					try:	
 					
 						post_facebook_message(sender_id,reply['quickreplies'])
 
 					except Exception as e:
-					print e
-					pass	
+						print e
+						pass	
 
 
 						 
