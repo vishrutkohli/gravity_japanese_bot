@@ -92,7 +92,9 @@ class MyChatBotView(generic.View):
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
+					print "just going to  invoke natural_text"
 					reply = natural_text(sender_id , message_text)
+					print "blah blah" + str(reply['text'])
 					print "yoyoyoyyo"  + str(reply['quickreplies'])
 					post_facebook_message(sender_id, reply['text'])
 					
