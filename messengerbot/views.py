@@ -8,18 +8,16 @@ from django.utils.decorators import method_decorator
 import json
 import requests
 from api_ai import natural_text
+from messengerbot.models import user , status_code , status , type_of_service , mode_of_contact , type_of_shipment , type_of_collection , type_of_box , address , language , country , place , order
 
 
 #api.ai webhook integration
 @csrf_exempt
 def api_ai_webhook(request):
-	# Create your views here.
 
 
 	try:
-		########################### EITHER YOU WILL HAVE YOUR POST REQUEST DATA IN REQUEST.BODY AND REQUEST.POST FROM WHERE YOU CAN PARSE it #######
 		print request.body
-		print "hihihihihihihihihihihihihii"
 		x = json.loads(request.body)
 		print request.body
 		print json.loads(request.body)
@@ -39,7 +37,6 @@ def api_ai_webhook(request):
 	return HttpResponse("Post Succcessful")
 
 
-# Create your views here.
 
 VERIFY_TOKEN = 'dhlchatbot'  #verify token for facebook webhook
 
@@ -87,11 +84,12 @@ class MyChatBotView(generic.View):
 
 	def post(self, request, *args, **kwargs):
 		incoming_message= json.loads(self.request.body.decode('utf-8'))
-		print  incoming_message
+		# print  incoming_message
 
 		for entry in incoming_message['entry']:
 			for message in entry['messaging']:
-				print message
+				print "this is message" + str(message)
+				user_instance = 
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
@@ -102,7 +100,7 @@ class MyChatBotView(generic.View):
 
 
 					try:
-						print "blah blah" + str(reply['text'])
+						# print "blah blah" + str(reply['text'])
 						post_facebook_message(sender_id, reply['text'])
 
 					except Exception as e:
@@ -110,13 +108,20 @@ class MyChatBotView(generic.View):
 						pass
 					
 					try:	
-						print "yoyoyoyyo"  + str(reply['quickreplies'])
+						# print "yoyoyoyyo"  + str(reply['quickreplies'])
 						post_facebook_message(sender_id,reply['quickreplies'])
 
 					except Exception as e:
 						print e
 						pass	
 
+					# try:	
+					# 	print "yoyoyoyy"  + str(reply['cards'])
+					# 	post_facebook_message(sender_id,reply['cards'])
+
+					# except Exception as e:
+					# 	print e
+					# 	pass	
 
 						 
 

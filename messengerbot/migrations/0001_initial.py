@@ -45,10 +45,10 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='modeOfContact',
+            name='mode_of_contact',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('modeOfContact', models.CharField(default=b'NULL', max_length=250)),
+                ('mode_of_contact', models.CharField(default=b'NULL', max_length=250)),
             ],
             options={
             },
@@ -59,11 +59,11 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('date', models.DateField(null=True, blank=True)),
-                ('signatureOnDelivery', models.CharField(default=b'NULL', max_length=250)),
+                ('signature_on_delivery', models.CharField(default=b'NULL', max_length=250)),
                 ('description', models.CharField(default=b'NULL', max_length=250)),
-                ('orderID', models.CharField(default=b'NULL', max_length=250)),
-                ('addressFrom', models.ForeignKey(related_name=b'addressFrom', to='messengerbot.address')),
-                ('addressTo', models.ForeignKey(related_name=b'addressTo', to='messengerbot.address')),
+                ('order_id', models.CharField(default=b'NULL', max_length=250)),
+                ('address_from', models.ForeignKey(related_name=b'addressFrom', to='messengerbot.address')),
+                ('address_to', models.ForeignKey(related_name=b'addressTo', to='messengerbot.address')),
             ],
             options={
             },
@@ -94,7 +94,7 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='statusCode',
+            name='status_code',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('status', models.CharField(default=b'NULL', max_length=250)),
@@ -104,40 +104,40 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='typeOfBox',
+            name='type_of_box',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('typeOfBox', models.CharField(default=b'NULL', max_length=250)),
+                ('type_of_box', models.CharField(default=b'NULL', max_length=250)),
             ],
             options={
             },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='typeOfCollection',
+            name='type_of_collection',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('typeOfCollection', models.CharField(default=b'NULL', max_length=250)),
+                ('type_of_collection', models.CharField(default=b'NULL', max_length=250)),
             ],
             options={
             },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='typeOfService',
+            name='type_of_service',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('typeOfService', models.CharField(default=b'NULL', max_length=250)),
+                ('type_of_service', models.CharField(default=b'NULL', max_length=250)),
             ],
             options={
             },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='typeOfShipment',
+            name='type_of_shipment',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('typeOfShipment', models.CharField(default=b'NULL', max_length=250)),
+                ('type_of_shipment', models.CharField(default=b'NULL', max_length=250)),
             ],
             options={
             },
@@ -159,7 +159,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='status',
             name='status',
-            field=models.ForeignKey(related_name=b'statusMessage', to='messengerbot.statusCode'),
+            field=models.ForeignKey(related_name=b'statusMessage', to='messengerbot.status_code'),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -170,8 +170,8 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='order',
-            name='modeOfContact',
-            field=models.ForeignKey(to='messengerbot.modeOfContact'),
+            name='mode_of_contact',
+            field=models.ForeignKey(to='messengerbot.mode_of_contact'),
             preserve_default=True,
         ),
         migrations.AddField(
@@ -182,26 +182,26 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='order',
-            name='typeOfBox',
-            field=models.ForeignKey(to='messengerbot.typeOfBox'),
+            name='type_of_box',
+            field=models.ForeignKey(to='messengerbot.type_of_box'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='order',
-            name='typeOfCollection',
-            field=models.ForeignKey(to='messengerbot.typeOfCollection'),
+            name='type_of_collection',
+            field=models.ForeignKey(to='messengerbot.type_of_collection'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='order',
-            name='typeOfService',
-            field=models.ForeignKey(to='messengerbot.typeOfService'),
+            name='type_of_service',
+            field=models.ForeignKey(to='messengerbot.type_of_service'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='order',
-            name='typeOfShipment',
-            field=models.ForeignKey(to='messengerbot.typeOfShipment'),
+            name='type_of_shipment',
+            field=models.ForeignKey(to='messengerbot.type_of_shipment'),
             preserve_default=True,
         ),
         migrations.AddField(

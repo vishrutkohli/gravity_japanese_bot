@@ -20,7 +20,7 @@ class user(models.Model):
 
 #for all the status messages provided by dhl for eg: "The instruction data for this shipment have been provided by the sender to DHL electronically"    
 
-class statusCode(models.Model):
+class status_code(models.Model):
     status = models.CharField(max_length = 250 , default = 'NULL')   
 
     def __str__(self):
@@ -29,7 +29,7 @@ class statusCode(models.Model):
 
 
 class status(models.Model):
-    status = models.ForeignKey(statusCode , related_name='statusMessage', on_delete=models.CASCADE)
+    status = models.ForeignKey(status_code , related_name='statusMessage', on_delete=models.CASCADE)
     timestamp = models.DateTimeField(blank = True , null = True)
     location = models.CharField(max_length = 250 , default = 'NULL')
     # orderID = models.ForeignKey(order, on_delete=models.CASCADE)
@@ -42,43 +42,43 @@ class status(models.Model):
 
     
 #for services like "door-to-door","next-day","2-working-day","5-working-day",
-class typeOfService(models.Model):
-    typeOfService = models.CharField(max_length = 250 , default = 'NULL')
+class type_of_service(models.Model):
+    type_of_service = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
-        return self.typeOfService
+        return self.type_of_service
 
 
     
 
 
 # for mode of conact for the user like "phone " or "online"
-class modeOfContact(models.Model):
-    modeOfContact = models.CharField(max_length = 250 , default = 'NULL')
+class mode_of_contact(models.Model):
+    mode_of_contact = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
-        return self.modeOfContact
+        return self.mode_of_contact
 
 #for shipments "Domestic" or "International"
-class typeOfShipment(models.Model):
-    typeOfShipment = models.CharField(max_length = 250 , default = 'NULL')
+class type_of_shipment(models.Model):
+    type_of_shipment = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
-        return self.typeOfShipment
+        return self.type_of_shipment
 
 #for type of collection of parcel "Drop Off" or "Pick up"
-class typeOfCollection(models.Model):
-    typeOfCollection = models.CharField(max_length = 250 , default = 'NULL')
+class type_of_collection(models.Model):
+    type_of_collection = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
-        return self.typeOfCollection
+        return self.type_of_collection
 
 # for type of containers like envolope , box 1 , box 2 , box 3 etc.
-class typeOfBox(models.Model):
-    typeOfBox = models.CharField(max_length = 250 , default = 'NULL')
+class type_of_box(models.Model):
+    type_of_box = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
-        return self.typeOfBox
+        return self.type_of_box
 
 #  for address of the user mapped with user id . 
 class address(models.Model):
@@ -133,23 +133,23 @@ class place(models.Model):
 #for all the orders placed by the bot 
 class order(models.Model):
     date = models.DateField(blank = True , null = True) 
-    signatureOnDelivery = models.CharField(max_length = 250 , default = 'NULL') 
+    signature_on_delivery = models.CharField(max_length = 250 , default = 'NULL') 
     description = models.CharField(max_length = 250 , default = 'NULL') 
 
-    orderID = models.CharField(max_length = 250 , default = 'NULL') 
+    order_id = models.CharField(max_length = 250 , default = 'NULL') 
     fbid = models.ForeignKey(user, on_delete=models.CASCADE)
-    typeOfService = models.ForeignKey(typeOfService, on_delete=models.CASCADE)
+    type_of_service = models.ForeignKey(type_of_service, on_delete=models.CASCADE)
     status = models.ForeignKey(status, on_delete=models.CASCADE)
-    addressFrom = models.ForeignKey(address, related_name='addressFrom', on_delete=models.CASCADE)
-    addressTo = models.ForeignKey(address, related_name='addressTo', on_delete=models.CASCADE)
-    typeOfShipment = models.ForeignKey(typeOfShipment, on_delete=models.CASCADE)
-    modeOfContact = models.ForeignKey(modeOfContact, on_delete=models.CASCADE)
-    typeOfCollection = models.ForeignKey(typeOfCollection, on_delete=models.CASCADE)
-    typeOfBox = models.ForeignKey(typeOfBox, on_delete=models.CASCADE)
+    address_from = models.ForeignKey(address, related_name='addressFrom', on_delete=models.CASCADE)
+    address_to = models.ForeignKey(address, related_name='addressTo', on_delete=models.CASCADE)
+    type_of_shipment = models.ForeignKey(type_of_shipment, on_delete=models.CASCADE)
+    mode_of_contact = models.ForeignKey(mode_of_contact, on_delete=models.CASCADE)
+    type_of_collection = models.ForeignKey(type_of_collection, on_delete=models.CASCADE)
+    type_of_box = models.ForeignKey(type_of_box, on_delete=models.CASCADE)
 
     
 
     def __str__(self):
-        return self.orderID
+        return self.order_id
 
     
