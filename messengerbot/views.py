@@ -89,13 +89,12 @@ class MyChatBotView(generic.View):
 		for entry in incoming_message['entry']:
 			for message in entry['messaging']:
 				print "this is message" + str(message)
-				user_instance = 
+				user_instance = user.objects.get_or_create(fbid =sender_id)[0]
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
 					print "just going to  invoke natural_text"
 					reply = natural_text(sender_id , message_text)
-					
 					
 
 
