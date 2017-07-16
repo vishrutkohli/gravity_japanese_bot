@@ -97,16 +97,14 @@ class MyChatBotView(generic.View):
 
 
 					try:
-                    if 'postback' in message:
                     	message_text  = message['postback']['payload']
                     	reply = event_name(sender_id , message_text)
 
 						# print "blah blah" + str(reply['text'])
 						post_facebook_message(sender_id, reply['text'])
                         
-                        return HttpResponse()
-                    else:
-                        pass
+                        
+                    
 
 
 
@@ -133,7 +131,16 @@ class MyChatBotView(generic.View):
 						print e
 						pass	
 
-					
+					try:
+                    	message_text  = message['postback']['payload']
+                    	reply = event_name(sender_id , message_text)
+
+						# print "blah blah" + str(reply['text'])
+						post_facebook_message(sender_id, reply['text'])	
+
+					except Exception as e:
+						print e
+						pass
 						 
 
 					 
