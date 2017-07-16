@@ -170,33 +170,33 @@ class MyChatBotView(generic.View):
                         pass    
                         # print "blah blah" + str(reply['text'])
 
+                try:
+
+                  if message["message"]["attachments"][0]["type"] == "image":
+                    reply = event_name(sender_id , "photo")
                     try:
+                    # reply = natural_text(sender_id , message_text)
 
-                      if message["message"]["attachments"][0]["type"] == "image":
-                        reply = event_name(sender_id , "photo")
-                        try:
-                        # reply = natural_text(sender_id , message_text)
+                    # print "blah blah" + str(reply['text'])
+                        for message in reply['text']:
+                            post_facebook_message(sender_id,message )
 
-                        # print "blah blah" + str(reply['text'])
-                            for message in reply['text']:
-                                post_facebook_message(sender_id,message )
+                    except Exception as e:
+                        print e
+                        pass
+                
+                    try:    
+                    # reply = natural_text(sender_id , message_text)
 
-                        except Exception as e:
-                            print e
-                            pass
-                    
-                        try:    
-                        # reply = natural_text(sender_id , message_text)
-
-                        # print "yoyoyoyyo"  + str(reply['quickreplies'])
-                            for message in reply['attachments']:
+                    # print "yoyoyoyyo"  + str(reply['quickreplies'])
+                        for message in reply['attachments']:
 
 
-                                post_facebook_message(sender_id, message )
+                            post_facebook_message(sender_id, message )
 
-                        except Exception as e:
-                            print e
-                            pass
+                    except Exception as e:
+                        print e
+                        pass
                           
                           
 
