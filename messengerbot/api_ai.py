@@ -71,12 +71,12 @@ def natural_text(sender_id,text):
                               "recipient":{
                                 "id":sender_id
                               },
-                              "message":quickreply
+                              "message":text['payload']
                             }
 
             # quickreplies  = json.dumps(response_object)
 
-            attachments_array.append(text['payload'])
+            attachments_array.append(response_object)
             # reply.update({"quickreplies" : response_object})
 
 
@@ -153,12 +153,12 @@ def event_name(sender_id,event):
                               "recipient":{
                                 "id":sender_id
                               },
-                              "message":quickreply
+                              "message":text["payload"]
                             }
 
             # quickreplies  = json.dumps(response_object)
 
-            attachments_array.append(text['payload'])
+            attachments_array.append(response_object)
             # reply.update({"quickreplies" : response_object})
 
 
