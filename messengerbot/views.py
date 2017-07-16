@@ -110,7 +110,8 @@ class MyChatBotView(generic.View):
                         # reply = natural_text(sender_id , message_text)
 
                         # print "blah blah" + str(reply['text'])
-                        post_facebook_message(sender_id, reply['text'])
+                        for message in reply['text']:
+                            post_facebook_message(sender_id,message )
 
                     except Exception as e:
                         print e
@@ -120,7 +121,8 @@ class MyChatBotView(generic.View):
                         # reply = natural_text(sender_id , message_text)
 
                         # print "yoyoyoyyo"  + str(reply['quickreplies'])
-                        post_facebook_message(sender_id,reply['quickreplies'])
+                        for message in reply['attachments']:
+                            post_facebook_message(sender_id,message)
 
                     except Exception as e:
                         print e

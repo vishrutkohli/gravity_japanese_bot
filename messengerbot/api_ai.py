@@ -96,32 +96,44 @@ def event_name(sender_id,event):
 
     print response
     # print "hihihihihi"
-    
-    text = response['result']['fulfillment']['speech']
-    reply = {"text":text}
-    try:
+    text_array = []
+    attachments_array = []
+    for text in response['result']['fulfillment']["messages"]
+        try:
+            # reply = {"text":text}
+            text_array.append(text['speech'])
 
-        quickreply = response['result']['fulfillment']['messages'][1]['payload']
-
-        response_object =   {
-                          "recipient":{
-                            "id":sender_id
-                          },
-                          "message":quickreply
-                        }
-
-        # quickreplies  = json.dumps(response_object)
+        except Exception as e:
+                        print e
+                        pass    
 
 
-        reply.update({"quickreplies" : response_object})
+        try:
 
-    except Exception as e:
-                    print e
-                    pass
+            # quickreply = response['result']['fulfillment']['messages'][1]['payload']
+
+            response_object =   {
+                              "recipient":{
+                                "id":sender_id
+                              },
+                              "message":quickreply
+                            }
+
+            # quickreplies  = json.dumps(response_object)
+
+            attachments_array.append(text['payload'])
+            # reply.update({"quickreplies" : response_object})
+
+
+
+        except Exception as e:
+                        print e
+                        pass
 
    
 
-
+    reply  = {"text" : text_array , "attachments":attachments_array }
+    
                 
     
     print "this is reply" + str(reply)
