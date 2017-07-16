@@ -98,7 +98,7 @@ def event_name(sender_id,event):
     # print "hihihihihi"
     text_array = []
     attachments_array = []
-    for text in response['result']['fulfillment']["messages"]
+    for text in response['result']['fulfillment']["messages"]:
         try:
             # reply = {"text":text}
             text_array.append(text['speech'])
@@ -133,7 +133,7 @@ def event_name(sender_id,event):
    
 
     reply  = {"text" : text_array , "attachments":attachments_array }
-    
+
                 
     
     print "this is reply" + str(reply)
