@@ -52,7 +52,7 @@ def natural_text(sender_id,text):
                     pass
 
 
-    
+
     # try:
 
 
@@ -73,7 +73,7 @@ def natural_text(sender_id,text):
 
 
 
-def event_name(sender_id,event_dict):
+def event_name(sender_id,event):
     print "entered event_name"
     CLIENT_ACCESS_TOKEN="518b8c00e75d4739aa323e631c8cbc1b"
 
