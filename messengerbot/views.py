@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 import json
 import requests
-from api_ai import natural_text
+from api_ai import natural_text , event_name
 from messengerbot.models import user , status_code , status , type_of_service , mode_of_contact , type_of_shipment , type_of_collection , type_of_box , address , language , country , place , order
 
 
@@ -127,8 +127,9 @@ class MyChatBotView(generic.View):
                         pass    
 
                     try:
-                        
+
                         message_text  = message['postback']['payload']
+                        print message_text
                         reply = event_name(sender_id , message_text)
 
                         # print "blah blah" + str(reply['text'])
