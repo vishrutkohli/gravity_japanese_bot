@@ -144,9 +144,9 @@ class MyChatBotView(generic.View):
                         # print "blah blah" + str(reply['text'])
                         post_facebook_message(sender_id, reply['text']) 
 
-                    except Exception as e:
-                        print "this is event exception" + str(e)
-                        pass    
+                except Exception as e:
+                    print "this is event exception" + str(e)
+                    pass    
 
         return HttpResponse()  
 
