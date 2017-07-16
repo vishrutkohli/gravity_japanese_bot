@@ -52,16 +52,7 @@ def natural_text(sender_id,text):
                     pass
 
 
-    try:
-        print "entered event_name"
-
-        message_text  = message_text['postback']['payload']
-        print message_text
-        reply = event_name(sender_id , message_text)
-
-    except Exception as e:
-        print "this is event exception" + str(e)
-        pass
+    
     # try:
 
 

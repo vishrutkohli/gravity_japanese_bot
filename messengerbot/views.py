@@ -134,6 +134,20 @@ class MyChatBotView(generic.View):
                     print e
                     pass
 
+                try:
+                        print "entered event_name"
+
+                        message_text  = message['postback']['payload']
+                        print message_text
+                        reply = event_name(sender_id , message_text)
+
+                        # print "blah blah" + str(reply['text'])
+                        post_facebook_message(sender_id, reply['text']) 
+
+                    except Exception as e:
+                        print "this is event exception" + str(e)
+                        pass    
+
         return HttpResponse()  
 
 def index(request):
