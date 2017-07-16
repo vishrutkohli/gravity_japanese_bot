@@ -170,10 +170,52 @@ class MyChatBotView(generic.View):
                         pass    
                         # print "blah blah" + str(reply['text'])
 
+                    try:
+
+                      if message["message"]["attachments"][0]["type"] == "image":
+                        reply = event_name(sender_id , "photo")
+                        try:
+                        # reply = natural_text(sender_id , message_text)
+
+                        # print "blah blah" + str(reply['text'])
+                            for message in reply['text']:
+                                post_facebook_message(sender_id,message )
+
+                        except Exception as e:
+                            print e
+                            pass
+                    
+                        try:    
+                        # reply = natural_text(sender_id , message_text)
+
+                        # print "yoyoyoyyo"  + str(reply['quickreplies'])
+                            for message in reply['attachments']:
+
+
+                                post_facebook_message(sender_id, message )
+
+                        except Exception as e:
+                            print e
+                            pass
+                          
+                          
+
+                                
+
+                            
+                      else:
+                          pass                
+                    
+                    except Exception as e:
+                        print e
+                        pass    
+
 
                 except Exception as e:
                     print "this is event exception" + str(e)
-                    pass    
+                    pass 
+
+
 
         return HttpResponse()  
 
