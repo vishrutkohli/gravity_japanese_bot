@@ -72,6 +72,7 @@ def natural_text(sender_id,text):
 
 
 def event_name(sender_id,event_dict):
+    print "entered event_name"
     CLIENT_ACCESS_TOKEN="518b8c00e75d4739aa323e631c8cbc1b"
 
     ## instantiate an api.ai parser object 
@@ -81,7 +82,7 @@ def event_name(sender_id,event_dict):
     # textRequest=parser.text_request() ## Created a default intent to respond to this user text on api.ai console
     # textRequest.query=text
     # base_url = "https://api.api.ai/v1/"
-    event = 
+
     url  = "https://api.api.ai/api/query?v=20150910&e=" + event + "&lang=en&sessionId=" + sender_id + "&timezone=2017-07-15T22:54:48+0530"
 
     ## Parsing the response 
