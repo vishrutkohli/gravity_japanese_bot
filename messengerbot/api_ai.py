@@ -29,28 +29,65 @@ def natural_text(sender_id,text):
     print response
     # print "hihihihihi"
     
-    text = response['result']['fulfillment']['speech']
-    reply = {"text":text}
-    try:
+    # text = response['result']['fulfillment']['speech']
+    # reply = {"text":text}
+    # try:
 
-        quickreply = response['result']['fulfillment']['messages'][1]['payload']
+    #     quickreply = response['result']['fulfillment']['messages'][1]['payload']
 
-        response_object =   {
-                          "recipient":{
-                            "id":sender_id
-                          },
-                          "message":quickreply
-                        }
+    #     response_object =   {
+    #                       "recipient":{
+    #                         "id":sender_id
+    #                       },
+    #                       "message":quickreply
+    #                     }
 
-        # quickreplies  = json.dumps(response_object)
+    #     # quickreplies  = json.dumps(response_object)
 
 
-        reply.update({"quickreplies" : response_object})
+    #     reply.update({"quickreplies" : response_object})
 
-    except Exception as e:
-                    print e
-                    pass
+    # except Exception as e:
+    #                 print e
+    #                 pass
 
+    text_array = []
+    attachments_array = []
+    for text in response['result']['fulfillment']["messages"]:
+        try:
+            # reply = {"text":text}
+            text_array.append(text['speech'])
+
+        except Exception as e:
+                        print e
+                        pass    
+
+
+        try:
+
+            # quickreply = response['result']['fulfillment']['messages'][1]['payload']
+
+            response_object =   {
+                              "recipient":{
+                                "id":sender_id
+                              },
+                              "message":quickreply
+                            }
+
+            # quickreplies  = json.dumps(response_object)
+
+            attachments_array.append(text['payload'])
+            # reply.update({"quickreplies" : response_object})
+
+
+
+        except Exception as e:
+                        print e
+                        pass
+
+   
+
+    reply  = {"text" : text_array , "attachments":attachments_array }
 
 
     # try:
