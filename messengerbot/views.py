@@ -207,8 +207,9 @@ class MyChatBotView(generic.View):
                                 
 
                             
-                      else:
-                          pass                
+                  else:
+
+                    pass                
                     
                    
 
