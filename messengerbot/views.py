@@ -127,6 +127,7 @@ class MyChatBotView(generic.View):
                         pass    
 
                     try:
+                        print "entered event_name"
 
                         message_text  = message['postback']['payload']
                         print message_text
@@ -136,7 +137,7 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id, reply['text']) 
 
                     except Exception as e:
-                        print e
+                        print "this is event exception" + str(e)
                         pass
                          
 
