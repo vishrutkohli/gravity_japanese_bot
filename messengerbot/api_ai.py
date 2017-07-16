@@ -50,19 +50,16 @@ def natural_text(sender_id,text):
                     print e
                     pass
 
-    try:
+    # try:
 
-                  if message["message"]["attachments"][0]["type"] == "image":
-                      p = eresume.objects.get_or_create(fbid =sender_id)[0]
-                          
 
-                        
-                  else:
-                      pass                
-                    
-                except Exception as e:
-                    print e
-                    pass 
+    #     if message["message"]["attachments"][0]["type"] == "image":
+    #                   p = eresume.objects.get_or_create(fbid =sender_id)[0]
+                                        
+            
+    #     except Exception as e:
+    #         print e
+    #         pass 
 
 
                 
