@@ -96,6 +96,7 @@ class MyChatBotView(generic.View):
                     user_instance = user.objects.get_or_create(fbid =sender_id)[0]
 
                     reply = natural_text(sender_id , message_text)
+                    print "this is reply " + str(reply)
                     
                         
                         
@@ -122,7 +123,9 @@ class MyChatBotView(generic.View):
 
                         # print "yoyoyoyyo"  + str(reply['quickreplies'])
                         for message in reply['attachments']:
-                            post_facebook_message(sender_id,message)
+
+
+                            post_facebook_message(sender_id, message )
 
                     except Exception as e:
                         print e
@@ -137,14 +140,36 @@ class MyChatBotView(generic.View):
                     pass
 
                 try:
-                        print "entered event_name"
+                    print "entered event_name"
 
-                        message_text  = message['postback']['payload']
-                        print message_text
-                        reply = event_name(sender_id , message_text)
+                    message_text  = message['postback']['payload']
+                    print message_text
+                    reply = event_name(sender_id , message_text)
+                    try:
+                        # reply = natural_text(sender_id , message_text)
 
                         # print "blah blah" + str(reply['text'])
-                        post_facebook_message(sender_id, reply['text']) 
+                        for message in reply['text']:
+                            post_facebook_message(sender_id,message )
+
+                    except Exception as e:
+                        print e
+                        pass
+                    
+                    try:    
+                        # reply = natural_text(sender_id , message_text)
+
+                        # print "yoyoyoyyo"  + str(reply['quickreplies'])
+                        for message in reply['attachments']:
+
+
+                            post_facebook_message(sender_id, message )
+
+                    except Exception as e:
+                        print e
+                        pass    
+                        # print "blah blah" + str(reply['text'])
+
 
                 except Exception as e:
                     print "this is event exception" + str(e)
