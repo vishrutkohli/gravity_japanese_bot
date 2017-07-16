@@ -95,12 +95,27 @@ class MyChatBotView(generic.View):
 					print "just going to  invoke natural_text"
 					user_instance = user.objects.get_or_create(fbid =sender_id)[0]
 
-					reply = natural_text(sender_id , message_text)
+
+					try:
+                    if 'postback' in message:
+                    	message_text  = message['postback']['payload']
+                    	reply = event_name(sender_id , message_text)
+
+						# print "blah blah" + str(reply['text'])
+						post_facebook_message(sender_id, reply['text'])
+                        
+                        return HttpResponse()
+                    else:
+                        pass
+
+
 
 					
 
 
 					try:
+						reply = natural_text(sender_id , message_text)
+
 						# print "blah blah" + str(reply['text'])
 						post_facebook_message(sender_id, reply['text'])
 
@@ -109,6 +124,8 @@ class MyChatBotView(generic.View):
 						pass
 					
 					try:	
+						reply = natural_text(sender_id , message_text)
+
 						# print "yoyoyoyyo"  + str(reply['quickreplies'])
 						post_facebook_message(sender_id,reply['quickreplies'])
 
@@ -116,14 +133,7 @@ class MyChatBotView(generic.View):
 						print e
 						pass	
 
-					# try:	
-					# 	print "yoyoyoyy"  + str(reply['cards'])
-					# 	post_facebook_message(sender_id,reply['cards'])
-
-					# except Exception as e:
-					# 	print e
-					# 	pass	
-
+					
 						 
 
 					 
