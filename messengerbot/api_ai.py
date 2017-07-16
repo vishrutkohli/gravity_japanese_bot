@@ -114,19 +114,7 @@ def event_name(sender_id,event):
                     print e
                     pass
 
-    try:
-
-                  if message["message"]["attachments"][0]["type"] == "image":
-                      p = eresume.objects.get_or_create(fbid =sender_id)[0]
-                          
-
-                        
-                  else:
-                      pass                
-                    
-                except Exception as e:
-                    print e
-                    pass 
+   
 
 
                 
