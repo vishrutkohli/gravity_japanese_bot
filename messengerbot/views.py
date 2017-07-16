@@ -96,12 +96,7 @@ class MyChatBotView(generic.View):
 					user_instance = user.objects.get_or_create(fbid =sender_id)[0]
 
 
-					try:
-                    	message_text  = message['postback']['payload']
-                    	reply = event_name(sender_id , message_text)
-
-						# print "blah blah" + str(reply['text'])
-						post_facebook_message(sender_id, reply['text'])
+					
                         
                         
                     
