@@ -17,7 +17,7 @@ def user_details(fbid):
     data =json.loads(resp.text)
     return data   
 
-api.ai webhook integration
+# api.ai webhook integration
 @csrf_exempt
 def api_ai_webhook(request):
 
