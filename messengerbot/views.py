@@ -101,7 +101,7 @@ class MyChatBotView(generic.View):
                     print "just going to  invoke natural_text"
                     user_instance = user.objects.get_or_create(fbid =sender_id)[0]
                     user_detail = user_details(sender_id)
-                    name = '%s %s'%(user_details['first_name'],user_details['last_name'])
+                    name = '%s %s'%(user_detail['first_name'],user_detail['last_name'])
                     user_instance.name = name
                     user_instance.save()
 
