@@ -17,16 +17,16 @@ def user_details(fbid):
     data =json.loads(resp.text)
     return data   
 
-#api.ai webhook integration
-# @csrf_exempt
-# def api_ai_webhook(request):
+api.ai webhook integration
+@csrf_exempt
+def api_ai_webhook(request):
 
 
-#     try:
-#         print request.body
-#         x = json.loads(request.body)
-#         print request.body
-#         print json.loads(request.body)
+    try:
+        print request.body
+        x = json.loads(request.body)
+        print request.body
+        print json.loads(request.body)
 
         
 
@@ -37,10 +37,10 @@ def user_details(fbid):
 
 
             
-#     except Exception as e:
-#         print e
-#         return HttpResponse(e)
-#     return HttpResponse("Post Succcessful")
+    except Exception as e:
+        print e
+        return HttpResponse(e)
+    return HttpResponse("Post Succcessful")
 
 
 
