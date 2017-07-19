@@ -11,16 +11,22 @@ from api_ai import natural_text , event_name
 from messengerbot.models import user , status_code , status , type_of_service , mode_of_contact , type_of_shipment , type_of_collection , type_of_box , address , language , country , place , order
 
 
+def user_details(fbid):
+    url = 'https://graph.facebook.com/v2.6/' + fbid + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAGE_ACCESS_TOKEN
+    resp = requests.get(url=url)
+    data =json.loads(resp.text)
+    return data   
+
 #api.ai webhook integration
-@csrf_exempt
-def api_ai_webhook(request):
+# @csrf_exempt
+# def api_ai_webhook(request):
 
 
-    try:
-        print request.body
-        x = json.loads(request.body)
-        print request.body
-        print json.loads(request.body)
+#     try:
+#         print request.body
+#         x = json.loads(request.body)
+#         print request.body
+#         print json.loads(request.body)
 
         
 
@@ -31,10 +37,10 @@ def api_ai_webhook(request):
 
 
             
-    except Exception as e:
-        print e
-        return HttpResponse(e)
-    return HttpResponse("Post Succcessful")
+#     except Exception as e:
+#         print e
+#         return HttpResponse(e)
+#     return HttpResponse("Post Succcessful")
 
 
 
@@ -94,10 +100,15 @@ class MyChatBotView(generic.View):
                     message_text = message['message']['text']
                     print "just going to  invoke natural_text"
                     user_instance = user.objects.get_or_create(fbid =sender_id)[0]
+                    user_detail = user_details(sender_id)
+                    name = '%s %s'%(user_details['first_name'],user_details['last_name'])
+                    user_instance.name = name
+                    user_instance.save()
 
                     reply = natural_text(sender_id , message_text)
                     print "this is reply " + str(reply)
                     
+
                         
                         
                     
@@ -172,7 +183,45 @@ class MyChatBotView(generic.View):
 
                 except Exception as e:
                     print e
-                    pass         
+                    pass
+
+
+                try:
+                    print "entered event_name"
+
+                    message_text  = message['message']['quick_reply']['payload']
+                    print message_text
+                    reply = event_name(sender_id , message_text)
+                    try:
+                        # reply = natural_text(sender_id , message_text)
+
+                        # print "blah blah" + str(reply['text'])
+                        for message in reply['text']:
+                            post_facebook_message(sender_id,message )
+
+                    except Exception as e:
+                        print e
+                        pass
+                    
+                    try:    
+                        # reply = natural_text(sender_id , message_text)
+
+                        # print "yoyoyoyyo"  + str(reply['quickreplies'])
+                        for message in reply['attachments']:
+
+
+                            post_facebook_message(sender_id, message )
+
+                    except Exception as e:
+                        print e
+                        pass    
+                        # print "blah blah" + str(reply['text'])
+
+                except Exception as e:
+                    print e
+                    pass
+                    
+
 
                 try:
 
