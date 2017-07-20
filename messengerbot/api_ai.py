@@ -154,7 +154,7 @@ def event_name(sender_id,event):
     response = json.loads(response.text)
 
 
-    print response
+    print "this is response" + str(response)
     # print "hihihihihi"
     text_array = []
     attachments_array = []
