@@ -36,6 +36,7 @@ def natural_text(sender_id,text):
                 "sessionId": sender_id 
             }
 
+    data = json.dumps(data)
     response = requests.post(url, headers=headers , data = data )
     response = json.loads(response.text)
     print response
@@ -143,10 +144,12 @@ def event_name(sender_id,event):
             
                 "event":{"name":event , "data" : {"name" : name}},
                 
-                "timezone": "America/New_York",
+                "timezone": "GMT-5",
                 "lang": "en",
                 "sessionId": sender_id 
             }
+
+    data = json.dumps(data)        
     response = requests.post(url, headers=headers , data = data )
     response = json.loads(response.text)
 
