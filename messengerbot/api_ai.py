@@ -155,6 +155,14 @@ def event_name(sender_id,event):
 
 
     print "this is response" + str(response)
+    try:
+        context = response['result']['contexts'][0]["name"]
+        database_intercept(context , response)
+
+    except Exception as e:
+                        print e
+                        pass     
+
     # print "hihihihihi"
     text_array = []
     attachments_array = []
@@ -199,3 +207,6 @@ def event_name(sender_id,event):
     print "this is reply" + str(reply)
     return reply
 
+def database_intercept(context,response):
+    if context = "box-size":
+        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
