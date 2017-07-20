@@ -251,6 +251,9 @@ def database_intercept(context,response ,sender_id):
     elif context in ["Envelope-1" ,"Box-2"  , "Box-3" , "Box-4" , "Box-5" , "Box-6" , "Box-7"  ]:
         print "checking database intercept"  + str(context)
         order_instance.type_of_box = str(context)
+        order_instance.price = cost(context , order_instance.address_to)
+        print "this is price" + str(cost(context , order_instance.address_to))
+
         order_instance.save()
 
     elif context in ["door-to-door " ,"next-day"  , "3-working-day" , "5-working-day"   ]:
@@ -263,3 +266,109 @@ def database_intercept(context,response ,sender_id):
 
     else:
         pass
+
+
+def cost(box_name , destination_country ):
+    cost = ''
+    EuropeEU  = ['Austria','Belgium','Bulgaria','Croatia','Cyprus','Czech Republic','Denmark','Estonia','Finland','France','Germany','Greece','Hungary','Ireland','Italy','Latvia','Lithuania','Luxembourg','Malta','Netherlands','Poland','Portugal','Romania','Slovakia','Slovenia','Spain','Sweden']
+
+    Europe_Non_EU = ['Albania','Andorra','Belarus','Bosnia and Herzegovina','Canary Islands','Faroe Islands','Gibraltar','Greenland','Guernsey','Iceland','Jersey','Kosovo','Liechtenstein','Macedonia','Moldova, Republic of','Montenegro, Republic of','Norway','Russian Federation','San Marino','Serbia, Republic of','Switzerland','Turkey','Ukraine']
+
+    country = ['USA' , 'Canada' , 'Mexico']
+
+    if box_name == 'Envelope-1':
+        if destination_country == 'United Kingdom':
+            cost = '£7.95'
+        elif destination_country in EuropeEU:
+            cost = '£26.95'
+        elif destination_country in Europe_Non_EU:
+            cost = '£28.95'
+        elif destination_country in country:
+            cost = '£30.95'
+        else:
+            cost = '£38.95'
+
+
+    if box_name == 'Box-2':
+        if destination_country == 'United Kingdom':
+            cost = '£13.95  '
+        elif destination_country in EuropeEU:
+            cost = '£34.95'
+        elif destination_country in Europe_Non_EU:
+            cost = '£36.95'
+        elif destination_country in country:
+            cost = '£37.95'
+        else:
+            cost = '£49.95'
+
+
+    if box_name == 'Box-3':
+        if destination_country == 'United Kingdom':
+            cost = '£15.95'
+        elif destination_country in EuropeEU:
+            cost = '£38.95'
+        elif destination_country in Europe_Non_EU:
+            cost = '£39.95'
+        elif destination_country in country:
+            cost = '£40.95'
+        else:
+            cost = '£57.95'
+
+
+    if box_name == 'Box-4':
+        if destination_country == 'United Kingdom':
+            cost = '£16.95'
+        elif destination_country in EuropeEU:
+            cost = '£45.95'
+        elif destination_country in Europe_Non_EU:
+            cost = '£49.95'
+        elif destination_country in country:
+            cost = '£55.95'
+        else:
+            cost = '£78.95'
+
+
+    if box_name == 'Box-5':
+        if destination_country == 'United Kingdom':
+            cost = '£19.95'
+        elif destination_country in EuropeEU:
+            cost = '£67.95'
+        elif destination_country in Europe_Non_EU:
+            cost = '£79.95'
+        elif destination_country in country:
+            cost = '£89.95'
+        else:
+            cost = '£138.95'
+
+
+    if box_name == 'Box-6':
+        if destination_country == 'United Kingdom':
+            cost = '£21.95'
+        elif destination_country in EuropeEU:
+            cost = '£88.95'
+        elif destination_country in Europe_Non_EU:
+            cost = '£104.95'
+        elif destination_country in country:
+            cost = '£109.95'
+        else:
+            cost = '£172.95'
+
+
+    if box_name == 'Box-7':
+        if destination_country == 'United Kingdom':
+            cost = '£23.95'
+        elif destination_country in EuropeEU:
+            cost = '£105.95'
+        elif destination_country in Europe_Non_EU:
+            cost = '£119.95'
+        elif destination_country in country:
+            cost = '£125.95'
+        else:
+            cost = '£199.95'
+
+    else:
+        cost = "£23.95"       
+
+    return cost
+
+
