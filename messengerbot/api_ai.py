@@ -222,14 +222,14 @@ def database_intercept(context,response ,sender_id):
 
     order_instance = order.objects.get_or_create(fbid = sender_id)[0]
     
-    if context == "order-placing-location ":
+    if context == "order-placing-location-from":
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
-        order_instance.address_to = json.loads(response['result']['contexts'][0]["parameters"]["location"])
+        order_instance.address_to = json.dumps(response['result']['contexts'][0]["parameters"]["location"])
         order_instance.save()
 
     if context == "box-size":
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
-        order_instance.address_from = json.loads(response['result']['contexts'][0]["parameters"]["location"])
+        order_instance.address_from = json.dumps(response['result']['contexts'][0]["parameters"]["location"])
         order_instance.save()    
 
     else:
