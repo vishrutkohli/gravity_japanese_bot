@@ -234,19 +234,19 @@ def database_intercept(context,response ,sender_id):
     order_instance = order.objects.get_or_create(fbid = sender_id)[0]
     
     if context == "order-placing-location-from":
-        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
-        order_instance.address_to = json.dumps(response['result']['contexts'][0]["parameters"]["location"])
+        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["geo-country"])
+        order_instance.address_to = json.dumps(response['result']['contexts'][0]["parameters"]["geo-country"])
         order_instance.save()
 
     elif context == "box-size":
-        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
-        order_instance.address_from = json.dumps(response['result']['contexts'][0]["parameters"]["location"])
+        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["geo-country"])
+        order_instance.address_from = json.dumps(response['result']['contexts'][0]["parameters"]["geo-country"])
         order_instance.save()
 
-    elif context == "parcel-type":
-        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
-        order_instance.address_from = json.dumps(response['result']['contexts'][0]["parameters"]["location"])
-        order_instance.save()
+    # elif context == "parcel-type":
+    #     print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
+    #     order_instance.address_from = json.dumps(response['result']['contexts'][0]["parameters"]["location"])
+    #     order_instance.save()
 
     elif context in ["Envelope-1" ,"Box-2"  , "Box-3" , "Box-4" , "Box-5" , "Box-6" , "Box-7"  ]:
         print "checking database intercept"  + str(context)
