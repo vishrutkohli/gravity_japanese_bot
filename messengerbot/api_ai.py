@@ -140,13 +140,21 @@ def event_name(sender_id,event):
 
     url  = "https://api.api.ai/api/query?v=20150910"
     data  = {
-            
-                "event":{"name":event , "data" : {"name" : name}},
-                
-                "timezone": "America/New_York",
-                "lang": "en",
-                "sessionId": sender_id 
-            }
+    "query": [
+        "and for tomorrow"
+    ],
+    "contexts": [{
+        "name": "weather",
+        "lifespan": 4
+    }],
+    "location": {
+        "latitude": 37.459157,
+        "longitude": -122.17926
+    },
+    "timezone": "America/New_York",
+    "lang": "en",
+    "sessionId": "1234567890"
+}
     response = requests.post(url, headers=headers , data = data )
     response = json.loads(response.text)
 
