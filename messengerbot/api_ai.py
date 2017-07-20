@@ -31,7 +31,7 @@ def natural_text(sender_id,text):
                     text 
                 ],
                 
-                "timezone": "2017-07-15T22:54:48+0530",
+                "timezone": "America/New_York",
                 "lang": "en",
                 "sessionId": sender_id 
             }
@@ -126,7 +126,8 @@ def natural_text(sender_id,text):
 def event_name(sender_id,event):
     print "entered event_name"
     CLIENT_ACCESS_TOKEN="518b8c00e75d4739aa323e631c8cbc1b"
-    user_instance = user.objects.get_or_create(fbid =sender_id)[0]
+    user_instance = user.objects.get(fbid =sender_id)
+    name  = user_instance.name 
 
     ## instantiate an api.ai parser object 
     # parser=ai.ApiAI(CLIENT_ACCESS_TOKEN)
@@ -140,9 +141,9 @@ def event_name(sender_id,event):
     url  = "https://api.api.ai/api/query?v=20150910"
     data  = {
             
-                "event":{"name":"welcome" , "data" : {"name" : "vishrut"}},
+                "event":{"name":event , "data" : {"name" : name}},
                 
-                "timezone": "2017-07-15T22:54:48+0530",
+                "timezone": "America/New_York",
                 "lang": "en",
                 "sessionId": sender_id 
             }
