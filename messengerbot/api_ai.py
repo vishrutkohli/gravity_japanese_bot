@@ -140,7 +140,7 @@ def event_name(sender_id,event):
     name  = user_instance.name 
 
     order_instance = order.objects.get_or_create(fbid = sender_id)[0]
-    
+
 
     ## instantiate an api.ai parser object 
     # parser=ai.ApiAI(CLIENT_ACCESS_TOKEN)
@@ -235,12 +235,12 @@ def database_intercept(context,response ,sender_id):
     
     if context == "order-placing-location-from":
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["geo-country"])
-        order_instance.address_to = json.dumps(response['result']['contexts'][0]["parameters"]["geo-country"])
+        order_instance.address_to = response['result']['contexts'][0]["parameters"]["geo-country"]
         order_instance.save()
 
     elif context == "box-size":
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["geo-country"])
-        order_instance.address_from = json.dumps(response['result']['contexts'][0]["parameters"]["geo-country"])
+        order_instance.address_from = response['result']['contexts'][0]["parameters"]["geo-country"]
         order_instance.save()
 
     # elif context == "parcel-type":
