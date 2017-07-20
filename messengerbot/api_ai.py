@@ -44,7 +44,7 @@ def natural_text(sender_id,text):
     try:
         context = response['result']['contexts'][0]["name"]
         print "this is context"  + str(context)
-        database_intercept(context , response)
+        database_intercept(context , response, sender_id)
 
     except Exception as e:
                         print e
