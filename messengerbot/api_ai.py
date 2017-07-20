@@ -255,7 +255,7 @@ def database_intercept(context,response ,sender_id):
         print "checking database intercept"  + str(context)
         order_instance.type_of_box = str(context)
         price  = cost(context , order_instance.address_to)
-        order_instance.price = re.findall('\d+', price)
+        order_instance.price = price.split('£')[1]
         print "this is country"  + str(order_instance.address_to)
         print "this is price" + str(cost(context , order_instance.address_to))
 
