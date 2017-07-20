@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import apiai as ai
 import json 
 import requests
