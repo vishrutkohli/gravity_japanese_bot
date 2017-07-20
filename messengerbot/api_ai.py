@@ -136,25 +136,17 @@ def event_name(sender_id,event):
     # textRequest=parser.text_request() ## Created a default intent to respond to this user text on api.ai console
     # textRequest.query=text
     # base_url = "https://api.api.ai/v1/"
-    headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"  , "Content-Type": "application/json; charset=utf-8"}
+    headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"  , "Content-Type": "application/json"}
 
     url  = "https://api.api.ai/api/query?v=20150910"
     data  = {
-    "query": [
-        "and for tomorrow"
-    ],
-    "contexts": [{
-        "name": "weather",
-        "lifespan": 4
-    }],
-    "location": {
-        "latitude": 37.459157,
-        "longitude": -122.17926
-    },
-    "timezone": "America/New_York",
-    "lang": "en",
-    "sessionId": "1234567890"
-}
+            
+                "event":{"name":event , "data" : {"name" : name}},
+                
+                "timezone": "America/New_York",
+                "lang": "en",
+                "sessionId": sender_id 
+            }
     response = requests.post(url, headers=headers , data = data )
     response = json.loads(response.text)
 
