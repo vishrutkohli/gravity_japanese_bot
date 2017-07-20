@@ -17,16 +17,28 @@ def natural_text(sender_id,text):
     # textRequest.query=text
     # base_url = "https://api.api.ai/v1/"
 
-    url  = "https://api.api.ai/api/query?v=20150910&query=" + text + "&lang=en&sessionId=" + sender_id + "&timezone=2017-07-15T22:54:48+0530"
+    # url  = "https://api.api.ai/api/query?v=20150910&query=" + text + "&lang=en&sessionId=" + sender_id + "&timezone=2017-07-15T22:54:48+0530"
 
-    ## Parsing the response 
-    # response = json.loads(textRequest.getresponse().read().decode('utf-8'))
-    headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"}
-    response = requests.get(url, headers=headers)
-    response = json.loads(response.text)
+    # ## Parsing the response 
+    # # response = json.loads(textRequest.getresponse().read().decode('utf-8'))
+    # headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"}
+    # response = requests.get(url, headers=headers)
+    # response = json.loads(response.text)
 
+    url  = "https://api.api.ai/api/query?v=20150910"
+    data  = {
+                "query": [
+                    text 
+                ],
+                
+                "timezone": "2017-07-15T22:54:48+0530",
+                "lang": "en",
+                "sessionId": sender_id 
+            }
 
     print response
+    response = requests.post(url, headers=headers , data = data )
+    response = json.loads(response.text)
     # print "hihihihihi"
     
     # text = response['result']['fulfillment']['speech']
@@ -113,6 +125,7 @@ def natural_text(sender_id,text):
 def event_name(sender_id,event):
     print "entered event_name"
     CLIENT_ACCESS_TOKEN="518b8c00e75d4739aa323e631c8cbc1b"
+    user_instance = user.objects.get_or_create(fbid =sender_id)[0]
 
     ## instantiate an api.ai parser object 
     # parser=ai.ApiAI(CLIENT_ACCESS_TOKEN)
@@ -122,12 +135,20 @@ def event_name(sender_id,event):
     # textRequest.query=text
     # base_url = "https://api.api.ai/v1/"
 
-    url  = "https://api.api.ai/api/query?v=20150910&e=" + event + "&lang=en&sessionId=" + sender_id + "&timezone=2017-07-15T22:54:48+0530"
+    url  = "https://api.api.ai/api/query?v=20150910"
+    data  = {
+                "query": [
+                    text 
+                ],
+                "event":{"name":"welcome" , "data" : {"name" = user_instance.name}}
+                
+                "timezone": "2017-07-15T22:54:48+0530",
+                "lang": "en",
+                "sessionId": sender_id 
+            }
 
-    ## Parsing the response 
-    # response = json.loads(textRequest.getresponse().read().decode('utf-8'))
-    headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"}
-    response = requests.get(url, headers=headers)
+    print response
+    response = requests.post(url, headers=headers , data = data )
     response = json.loads(response.text)
 
 
