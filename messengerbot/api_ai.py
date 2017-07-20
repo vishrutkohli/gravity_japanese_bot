@@ -208,5 +208,5 @@ def event_name(sender_id,event):
     return reply
 
 def database_intercept(context,response):
-    if context = "box-size":
+    if context == "box-size":
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
