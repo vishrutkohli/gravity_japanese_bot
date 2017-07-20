@@ -254,6 +254,7 @@ def database_intercept(context,response ,sender_id):
         print "checking database intercept"  + str(context)
         order_instance.type_of_box = str(context)
         order_instance.price = cost(context , order_instance.address_to)
+        print "this is country"  + str(order_instance.address_to)
         print "this is price" + str(cost(context , order_instance.address_to))
 
         order_instance.save()
@@ -279,7 +280,7 @@ def cost(box_name , destination_country ):
     country = ['USA' , 'Canada' , 'Mexico']
 
     if box_name == 'Envelope-1':
-        if destination_country == 'United Kingdom':
+        if destination_country == 'United Kingdom of Great Britain and Northern Ireland':
             cost = '£7.95'
         elif destination_country in EuropeEU:
             cost = '£26.95'
@@ -291,8 +292,8 @@ def cost(box_name , destination_country ):
             cost = '£38.95'
 
 
-    if box_name == 'Box-2':
-        if destination_country == 'United Kingdom':
+    elif box_name == 'Box-2':
+        if destination_country == 'United Kingdom of Great Britain and Northern Ireland':
             cost = '£13.95  '
         elif destination_country in EuropeEU:
             cost = '£34.95'
@@ -304,8 +305,8 @@ def cost(box_name , destination_country ):
             cost = '£49.95'
 
 
-    if box_name == 'Box-3':
-        if destination_country == 'United Kingdom':
+    elif box_name == 'Box-3':
+        if destination_country == 'United Kingdom of Great Britain and Northern Ireland':
             cost = '£15.95'
         elif destination_country in EuropeEU:
             cost = '£38.95'
@@ -317,8 +318,8 @@ def cost(box_name , destination_country ):
             cost = '£57.95'
 
 
-    if box_name == 'Box-4':
-        if destination_country == 'United Kingdom':
+    elif box_name == 'Box-4':
+        if destination_country == 'United Kingdom of Great Britain and Northern Ireland':
             cost = '£16.95'
         elif destination_country in EuropeEU:
             cost = '£45.95'
@@ -330,8 +331,8 @@ def cost(box_name , destination_country ):
             cost = '£78.95'
 
 
-    if box_name == 'Box-5':
-        if destination_country == 'United Kingdom':
+    elif box_name == 'Box-5':
+        if destination_country == 'United Kingdom of Great Britain and Northern Ireland':
             cost = '£19.95'
         elif destination_country in EuropeEU:
             cost = '£67.95'
@@ -343,8 +344,8 @@ def cost(box_name , destination_country ):
             cost = '£138.95'
 
 
-    if box_name == 'Box-6':
-        if destination_country == 'United Kingdom':
+    elif box_name == 'Box-6':
+        if destination_country == 'United Kingdom of Great Britain and Northern Ireland':
             cost = '£21.95'
         elif destination_country in EuropeEU:
             cost = '£88.95'
@@ -356,8 +357,8 @@ def cost(box_name , destination_country ):
             cost = '£172.95'
 
 
-    if box_name == 'Box-7':
-        if destination_country == 'United Kingdom':
+    elif box_name == 'Box-7':
+        if destination_country == 'United Kingdom of Great Britain and Northern Ireland':
             cost = '£23.95'
         elif destination_country in EuropeEU:
             cost = '£105.95'
