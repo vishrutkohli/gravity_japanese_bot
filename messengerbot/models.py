@@ -145,7 +145,8 @@ class order(models.Model):
     type_of_shipment = models.CharField(max_length = 250 , default = 'NULL') 
     mode_of_contact = models.CharField(max_length = 250 , default = 'NULL') 
     type_of_collection = models.CharField(max_length = 250 , default = 'NULL') 
-    type_of_box = models.CharField(max_length = 250 , default = 'NULL') 
+    type_of_box = models.CharField(max_length = 250 , default = 'NULL')
+    price = models.CharField(max_length = 250 , default = 'NULL') 
 
     
 

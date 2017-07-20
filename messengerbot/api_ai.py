@@ -136,7 +136,7 @@ def natural_text(sender_id,text):
 def event_name(sender_id,event):
     print "entered event_name"
     CLIENT_ACCESS_TOKEN="518b8c00e75d4739aa323e631c8cbc1b"
-    user_instance = user.objects.get(fbid =sender_id)
+    user_instance = user.objects.get_or_create(fbid =sender_id)
     name  = user_instance.name 
 
     ## instantiate an api.ai parser object 
@@ -151,7 +151,7 @@ def event_name(sender_id,event):
     url  = "https://api.api.ai/v1/query?v=20150910"
     data  = {
             
-                "event":{"name":event , "data" : {"name" : name}},
+                "event":{"name":event , "data" : {"name" : name , "box":user_instance.type_of_box , "service" :user_instance.type_of_service  , "address_from":user_instance.address_from , "address_to" : user_instance.address_to , "price" : user_instance.price}},
                 
                 "timezone": "GMT-5",
                 "lang": "en",
@@ -235,20 +235,25 @@ def database_intercept(context,response ,sender_id):
         order_instance.address_to = json.dumps(response['result']['contexts'][0]["parameters"]["location"])
         order_instance.save()
 
-    if context == "box-size":
+    elif context == "box-size":
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
         order_instance.address_from = json.dumps(response['result']['contexts'][0]["parameters"]["location"])
         order_instance.save()
 
-    if context == "parcel-type":
+    elif context == "parcel-type":
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
         order_instance.address_from = json.dumps(response['result']['contexts'][0]["parameters"]["location"])
         order_instance.save()
 
-    if context in ["Envelope-1" ,"Box-2"  , "Box-3" , "Box-4" , "Box-5" , "Box-6" , "Box-7"  ]:
+    elif context in ["Envelope-1" ,"Box-2"  , "Box-3" , "Box-4" , "Box-5" , "Box-6" , "Box-7"  ]:
         print "checking database intercept"  + str(context)
         order_instance.type_of_box = str(context)
-        order_instance.save()         
+        order_instance.save()
+
+    elif context in ["door-to-door " ,"next-day"  , "3-working-day" , "5-working-day"   ]:
+        print "checking database intercept"  + str(context)
+        order_instance.type_of_service = str(context)
+        order_instance.save()                
 
 
 
