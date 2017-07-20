@@ -140,7 +140,7 @@ def event_name(sender_id,event):
     url  = "https://api.api.ai/api/query?v=20150910"
     data  = {
             
-                "event":{"name":"welcome" , "data" : {"name" : user_instance.name}},
+                "event":{"name":"welcome" , "data" : {"name" : "vishrut"}},
                 
                 "timezone": "2017-07-15T22:54:48+0530",
                 "lang": "en",
