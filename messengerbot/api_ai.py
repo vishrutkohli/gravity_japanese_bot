@@ -166,7 +166,7 @@ def event_name(sender_id,event):
     print "this is response" + str(response)
     try:
         context = response['result']['contexts'][0]["name"]
-        database_intercept(context , response)
+        database_intercept(context , response ,sender_id )
 
     except Exception as e:
                         print e
@@ -216,12 +216,21 @@ def event_name(sender_id,event):
     print "this is reply" + str(reply)
     return reply
 
-def database_intercept(context,response):
+
+
+def database_intercept(context,response ,sender_id):
+
+    order = order.objects.get_or_create(fbid = sender_id)[0]
+    
     if context == "order-placing-location ":
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
+        order.address_to = json.loads(response['result']['contexts'][0]["parameters"]["location"])
+        order.save()
 
     if context == "box-size":
-        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])    
+        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
+        order.address_from = json.loads(response['result']['contexts'][0]["parameters"]["location"])
+        order.save()    
 
     else:
         pass
