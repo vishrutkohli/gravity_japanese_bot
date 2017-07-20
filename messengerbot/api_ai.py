@@ -170,7 +170,15 @@ def event_name(sender_id,event):
 
     except Exception as e:
                         print e
-                        pass     
+                        pass
+
+    try:
+        context = response['result']['resolvedQuery']
+        database_intercept(context , response ,sender_id )
+
+    except Exception as e:
+                        print e
+                        pass                         
 
     # print "hihihihihi"
     text_array = []
@@ -230,7 +238,20 @@ def database_intercept(context,response ,sender_id):
     if context == "box-size":
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
         order_instance.address_from = json.dumps(response['result']['contexts'][0]["parameters"]["location"])
-        order_instance.save()    
+        order_instance.save()
+
+    if context == "parcel-type":
+        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"])
+        order_instance.address_from = json.dumps(response['result']['contexts'][0]["parameters"]["location"])
+        order_instance.save()
+
+    if context in ["Envelope-1" ,"Box-2"  , "Box-3" , "Box-4" , "Box-5" , "Box-6" , "Box-7"  ]:
+        print "checking database intercept"  + str(context)
+        order_instance.type_of_box = str(context)
+        order_instance.save()         
+
+
+
 
     else:
         pass
