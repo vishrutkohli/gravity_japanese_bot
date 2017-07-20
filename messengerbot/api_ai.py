@@ -39,7 +39,7 @@ def natural_text(sender_id,text):
     data = json.dumps(data)
     response = requests.post(url, headers=headers , data = data )
     response = json.loads(response.text)
-    print response
+    print "this is response" + str(response)
 
     # print "hihihihihi"
     
