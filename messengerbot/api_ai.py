@@ -21,7 +21,7 @@ def natural_text(sender_id,text):
 
     # ## Parsing the response 
     # # response = json.loads(textRequest.getresponse().read().decode('utf-8'))
-    # headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"}
+    headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"  , "Content-Type": "application/json; charset=utf-8"}
     # response = requests.get(url, headers=headers)
     # response = json.loads(response.text)
 
@@ -134,11 +134,12 @@ def event_name(sender_id,event):
     # textRequest=parser.text_request() ## Created a default intent to respond to this user text on api.ai console
     # textRequest.query=text
     # base_url = "https://api.api.ai/v1/"
+    headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"  , "Content-Type": "application/json; charset=utf-8"}
 
     url  = "https://api.api.ai/api/query?v=20150910"
     data  = {
             
-                "event":{"name":"welcome" , "data" : {"name" = "vishrut"}},
+                "event":{"name":"welcome" , "data" : {"name" : user_instance.name}},
                 
                 "timezone": "2017-07-15T22:54:48+0530",
                 "lang": "en",
