@@ -136,8 +136,11 @@ def natural_text(sender_id,text):
 def event_name(sender_id,event):
     print "entered event_name"
     CLIENT_ACCESS_TOKEN="518b8c00e75d4739aa323e631c8cbc1b"
-    user_instance = user.objects.get_or_create(fbid =sender_id)
+    user_instance = user.objects.get_or_create(fbid =sender_id)[0]
     name  = user_instance.name 
+
+    order_instance = order.objects.get_or_create(fbid = sender_id)[0]
+    
 
     ## instantiate an api.ai parser object 
     # parser=ai.ApiAI(CLIENT_ACCESS_TOKEN)
@@ -151,7 +154,7 @@ def event_name(sender_id,event):
     url  = "https://api.api.ai/v1/query?v=20150910"
     data  = {
             
-                "event":{"name":event , "data" : {"name" : name , "box":user_instance.type_of_box , "service" :user_instance.type_of_service  , "address_from":user_instance.address_from , "address_to" : user_instance.address_to , "price" : user_instance.price}},
+                "event":{"name":event , "data" : {"name" : name , "box":order_instance.type_of_box , "service" :order_instance.type_of_service  , "address_from":order_instance.address_from , "address_to" : order_instance.address_to , "price" : order_instance.price}},
                 
                 "timezone": "GMT-5",
                 "lang": "en",
