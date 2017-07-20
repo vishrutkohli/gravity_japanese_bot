@@ -132,7 +132,7 @@ class place(models.Model):
 
 #for all the orders placed by the bot 
 class order(models.Model):
-    date = models.DateField(blank = True , null = True) 
+    date = models.CharField(max_length = 250 , default = 'NULL')
     signature_on_delivery = models.CharField(max_length = 250 , default = 'NULL') 
     description = models.CharField(max_length = 250 , default = 'NULL') 
 

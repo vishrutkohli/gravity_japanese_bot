@@ -58,7 +58,7 @@ class Migration(migrations.Migration):
             name='order',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('date', models.DateField(null=True, blank=True)),
+                ('date', models.CharField(default=b'NULL', max_length=250)),
                 ('signature_on_delivery', models.CharField(default=b'NULL', max_length=250)),
                 ('description', models.CharField(default=b'NULL', max_length=250)),
                 ('order_id', models.CharField(default=b'NULL', max_length=250)),
