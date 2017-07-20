@@ -3,6 +3,7 @@
 import apiai as ai
 import json 
 import requests
+import re
 
 
 ## This is the token you can obtain from your app's dashboard
@@ -253,7 +254,8 @@ def database_intercept(context,response ,sender_id):
     elif context in ["Envelope-1" ,"Box-2"  , "Box-3" , "Box-4" , "Box-5" , "Box-6" , "Box-7"  ]:
         print "checking database intercept"  + str(context)
         order_instance.type_of_box = str(context)
-        order_instance.price = cost(context , order_instance.address_to)
+        price  = cost(context , order_instance.address_to)
+        order_instance.price = re.findall('\d+', price)
         print "this is country"  + str(order_instance.address_to)
         print "this is price" + str(cost(context , order_instance.address_to))
 
