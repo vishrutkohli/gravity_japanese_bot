@@ -36,9 +36,10 @@ def natural_text(sender_id,text):
                 "sessionId": sender_id 
             }
 
-    print response
     response = requests.post(url, headers=headers , data = data )
     response = json.loads(response.text)
+    print response
+
     # print "hihihihihi"
     
     # text = response['result']['fulfillment']['speech']
@@ -145,8 +146,6 @@ def event_name(sender_id,event):
                 "lang": "en",
                 "sessionId": sender_id 
             }
-
-    print response
     response = requests.post(url, headers=headers , data = data )
     response = json.loads(response.text)
 
