@@ -136,9 +136,9 @@ def event_name(sender_id,event):
     # textRequest=parser.text_request() ## Created a default intent to respond to this user text on api.ai console
     # textRequest.query=text
     # base_url = "https://api.api.ai/v1/"
-    headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"  , "Content-Type": "application/json"}
+    headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"  , "Content-Type": "application/json; charset=utf-8"}
 
-    url  = "https://api.api.ai/api/query?v=20150910"
+    url  = "https://api.api.ai/v1/query?v=20150910"
     data  = {
             
                 "event":{"name":event , "data" : {"name" : name}},
