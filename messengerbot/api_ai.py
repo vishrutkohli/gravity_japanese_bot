@@ -41,6 +41,15 @@ def natural_text(sender_id,text):
     response = json.loads(response.text)
     print "this is response" + str(response)
 
+    try:
+        context = response['result']['contexts'][0]["name"]
+        print "this is context"  + str(context)
+        database_intercept(context , response)
+
+    except Exception as e:
+                        print e
+                        pass  
+
     # print "hihihihihi"
     
     # text = response['result']['fulfillment']['speech']
