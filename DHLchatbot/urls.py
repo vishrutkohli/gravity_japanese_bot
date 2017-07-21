@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^otp_form$',v.otp_form),
     url(r'^receipt$',v.receipt),
     url(r'^track$',v.track),
+    url(r'^identity_confirmed$',v.identity_confirm),
     url(r'^api_ai$', v.api_ai_webhook, name='api_ai'),
 
 
