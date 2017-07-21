@@ -319,6 +319,10 @@ def identity_confirm(request):
     post_facebook_message(sender_id,"thanks , your order is confirmed")
 
 
+def identity_confirm(request):
+    return HttpResponse('Your Id Has Been Confirmed')
+
+
 
 
 

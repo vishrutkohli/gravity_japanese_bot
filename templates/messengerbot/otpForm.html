@@ -5,13 +5,14 @@
     
     <title></title>
     <style type="text/css">
-        form#ios input[type=password]{
+            input{
+        padding: 10px;
+        border: 1px solid #ddd;
+        width: 50px;
         height: 50px;
-        width: 40px;
         text-align: center;
-        font-size: 2em;
-        border: 1px solid #000;
-    } 
+        font-size: 30px;
+    }
     </style>
 </head>
 <body>
@@ -56,12 +57,20 @@ function httpGet(theUrl)
 </script>
   
 <center>
-    <form id="ios">
-        <input type="password" maxlength="1" />
-        <input type="password" maxlength="1"/>
-        <input type="password" maxlength="1"/>
-        <input type="password" maxlength="1"/>
-    </form>  
+    <h1>Enter Your Id</h1>
+    <input type="password" maxlength=1 id="1" onkeyup="moveOnMax(this,'a')" />
+    <input type="password" maxlength=1 id="a" onkeyup="moveOnMax(this,'b')" />
+    <input type="password" maxlength=1 id="b" onkeyup="moveOnMax(this,'c')" />
+    <input type="password" maxlength=1 id="c" />
+    <br>
+    <h3><a href="https://django.cowhite.com/blog/working-with-url-get-post-parameters-in-django/">Submit</a></h3>
 </center>
 </body>
+<script type="text/javascript">
+    moveOnMax =function (field, nextFieldID) {
+    if (field.value.length == 1) {
+        document.getElementById(nextFieldID).focus();
+    }
+}
+</script>
 </html>
