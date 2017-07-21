@@ -25,13 +25,13 @@
 }(document, 'script', 'Messenger'));
 </script>
 <script type="text/javascript">
-// function httpGet(theUrl) 
-// {
-//     var xmlHttp = new XMLHttpRequest();
-//     xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-//     xmlHttp.send( null );
-//     // return xmlHttp.responseText;
-// }
+function httpGet(theUrl) 
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    // return xmlHttp.responseText;
+}
 
   window.extAsyncInit = function() {
     
@@ -42,6 +42,8 @@
         alert(psid);
         console.log(psid);
         alert(psid)
+        var a  = httpGet('https://dhlbot.herokuapp.com/identity_confirmed?user_id=1439136072791184'); 
+
   
     }, function error(err, errorMessage) {
     alert(errorMessage);

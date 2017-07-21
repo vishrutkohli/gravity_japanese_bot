@@ -314,6 +314,8 @@ def track(request):
 
 
 def identity_confirm(request):
+    sender_id = request.GET.get('user_id')
+
     post_facebook_message(sender_id,"thanks , your order is confirmed")
 
 
