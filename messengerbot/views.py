@@ -108,8 +108,8 @@ class MyChatBotView(generic.View):
                     #     reply = event_name(sender_id , "welcome")
 
                     # else:
-                    #     reply = natural_text(sender_id , message_text)
-                    #     print "this is reply " + str(reply)
+                    reply = natural_text(sender_id , message_text)
+                    print "this is reply " + str(reply)
                     
 
 
