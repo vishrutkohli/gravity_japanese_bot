@@ -27,19 +27,17 @@
 <script type="text/javascript">
 
   window.extAsyncInit = function() {
-    MessengerExtensions.getContext('447464642282184', 
-  function success(result){
-     console.log(JSON.stringify(result));  
-
-
-  },
-  function error(result){
-  }
-
-
-
-);
+    
     // the Messenger Extensions JS SDK is done loading 
+    MessengerExtensions.getUserID(function success(uids) {
+    // User ID was successfully obtained. 
+        var psid = uids.psid;
+        alert(psid);
+        console.log(psid);
+  
+    }, function error(err, errorMessage) {      
+    // Error handling code
+    });
 
   };
     
