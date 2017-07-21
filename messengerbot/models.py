@@ -156,6 +156,6 @@ class order(models.Model):
     
 
     def __str__(self):
-        return self.order_id
+        return self.fbid
 
     
