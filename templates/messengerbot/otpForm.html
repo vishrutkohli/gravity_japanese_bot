@@ -25,14 +25,13 @@
 }(document, 'script', 'Messenger'));
 
   window.extAsyncInit = function() {
-    MessengerExtensions.getUserID(function success(uids) {
-    // User ID was successfully obtained. 
-        var psid = uids.psid;
-        console.log($psid);
-  
-    }, function error(err, errorMessage) {      
-    // Error handling code
-    });
+    MessengerExtensions.getContext('447464642282184', 
+  function success(result){
+
+  },
+  function error(result){
+  }
+);
     // the Messenger Extensions JS SDK is done loading 
   };
     
