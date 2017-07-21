@@ -237,12 +237,12 @@ class MyChatBotView(generic.View):
                     order_instance = order.objects.get_or_create(fbid = sender_id)[0]
                     if order_instance.picture_state == 1:
                         order_instance.picture_1 = message["message"]["attachments"][0]["payload"]["url"]
-                        order_instance.picture_state ==2
+                        order_instance.picture_state =2
                         order_instance.save()
 
                     elif order_instance.picture_state == 2:
                         order_instance.picture_2 = message["message"]["attachments"][0]["payload"]["url"]
-                        order_instance.picture_state ==1
+                        order_instance.picture_state =1
                         order_instance.save()
                               
 
