@@ -25,6 +25,13 @@
 }(document, 'script', 'Messenger'));
 </script>
 <script type="text/javascript">
+// function httpGet(theUrl) 
+// {
+//     var xmlHttp = new XMLHttpRequest();
+//     xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+//     xmlHttp.send( null );
+//     // return xmlHttp.responseText;
+// }
 
   window.extAsyncInit = function() {
     
@@ -34,6 +41,7 @@
         var psid = uids.psid;
         alert(psid);
         console.log(psid);
+        alert(psid)
   
     }, function error(err, errorMessage) {
     alert(errorMessage);
