@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Reciept</title>
+  {% load staticfiles %}
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel='stylesheet prefetch' href='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.1/angular-material.css'>
+    <link rel='stylesheet prefetch' href='https://material.angularjs.org/1.1.1/docs.css'>
+    <style type="text/css">
+    
+	.virtualRepeatdemoHorizontalUsage #horizontal-container {
+	  height: 570px;
+	  width: 100%;
+	  max-width: 1500px; }
+
+	.virtualRepeatdemoHorizontalUsage .repeated-item {
+	  border-right: 0px solid #ddd;
+	  box-sizing: border-box;
+	  display: inline-block;
+	  height: 680px;
+	  padding-top: 35px;
+	  text-align: center;
+	  width: 360px; 
+	  background-color: #FFDA33;
+	  color: red; 
+	}
+
+	.virtualRepeatdemoHorizontalUsage .md-card-image{
+	  height: 250px;
+	  width: 100%;
+
+	}
+
+	.virtualRepeatdemoHorizontalUsage .buttonPressed{
+	    background-color: #ADD8E6; /* blue */
+	    border: none;
+	    color: white;
+	    padding: 10px 10px;
+	    text-align : center;
+	    text-decoration : none;
+	    display : inline-block;
+	    font-size: 56px;
+	    border-radius: 50px;
+
+	}
+
+	.virtualRepeatdemoHorizontalUsage md-content {
+	  margin: 5px; }
+
+	.virtualRepeatdemoHorizontalUsage md-virtual-repeat-container {
+	  border: solid 1px grey; }
+
+	.virtualRepeatdemoHorizontalUsage .md-button{
+	  line-height: 5.6rem;
+	  min-width: 0;
+	  width: 5.6rem;
+	  height: 5.6rem;
+	  border-radius: 50%;
+	}
+
+    </style>
+</head>
+<body>
+
+
+<center>
+<div ng-app="MyApp" ng-controller="AppCtrl">
+      
+    <div class="virtualRepeatdemoHorizontalUsage" id="team1">
+      <md-content layout="column">
+        
+        
+        
+
+          <div class="repeated-item" flex="">
+           <md-card>
+            <img src="{% static 'sample.jpg' %}" class="md-card-image" alt="Washed Out">
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline"><b>SMITH</b></span>
+              </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+              <h6>
+                HACKEREARTH       &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp; HCL
+               </h6>
+
+               <h1>
+                <b>UK &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; IN</b>
+               </h1>
+
+               <h5>
+                Address       &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;  Address
+               </h5>
+
+               <h6>
+                66 King William St,London &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;60 Rampur,Banglore
+               </h6>
+
+               <h6>
+                EC4N7DZ,UK       &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;  560098,IN
+               </h6>
+               <br>
+ 
+               <h4>
+                Payment-On Delivery  Tracking Id-434242
+               </h4>
+
+                <h4>
+                Type - Box 3  &ensp;&ensp; Mobile No.- 212434242
+               </h4>
+
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+              <!-- <md-button>Action 1</md-button>
+              <md-button>Action 2</md-button> -->
+            </md-card-actions>
+          </md-card>
+            
+          </div>
+        
+      </md-content>
+
+
+    </div>
+</div> 
+</center>
+</body>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<!-- <script>
+	angular.module('cardDemo3', ['ngMaterial'])
+
+	.config(['$mdIconProvider', function($mdIconProvider) {
+	  $mdIconProvider.icon('md-toggle-arrow', 'img/icons/toggle-arrow.svg', 48);
+	}])
+	.controller('AppCtrl', function($scope) {
+	  $scope.imagePath = 'img/washedout.png';
+	});
+</script> -->
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+

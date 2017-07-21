@@ -224,3 +224,65 @@ class MyChatBotView(generic.View):
 
 def index(request):
     return HttpResponse('Hello world')
+
+
+
+
+
+
+
+
+def otp_form(request):
+    return render(request,'messengerbot/otpForm.html')
+
+
+
+def receipt(request):
+    return render(request,'messengerbot/smartReciept.html')
+
+def track(request):
+    return render(request,'messengerbot/track.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

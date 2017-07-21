@@ -50,6 +50,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+
 ROOT_URLCONF = 'DHLchatbot.urls'
 
 WSGI_APPLICATION = 'DHLchatbot.wsgi.application'
