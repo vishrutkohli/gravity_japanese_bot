@@ -147,6 +147,11 @@ class order(models.Model):
     type_of_collection = models.CharField(max_length = 250 , default = 'NULL') 
     type_of_box = models.CharField(max_length = 250 , default = 'NULL')
     price = models.CharField(max_length = 250 , default = 'NULL') 
+    picture_state = models.IntegerField(max_length = 250 , default = 1)
+    picture_1 = models.CharField(max_length = 250 , default = 'NULL')
+    picture_2 = models.CharField(max_length = 250 , default = 'NULL')
+
+
 
     
 
