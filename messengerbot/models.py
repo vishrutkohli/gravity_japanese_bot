@@ -132,20 +132,21 @@ class place(models.Model):
 
 #for all the orders placed by the bot 
 class order(models.Model):
-    date = models.DateField(blank = True , null = True) 
+    date = models.CharField(max_length = 250 , default = 'NULL')
     signature_on_delivery = models.CharField(max_length = 250 , default = 'NULL') 
     description = models.CharField(max_length = 250 , default = 'NULL') 
 
     order_id = models.CharField(max_length = 250 , default = 'NULL') 
-    fbid = models.ForeignKey(user, on_delete=models.CASCADE)
-    type_of_service = models.ForeignKey(type_of_service, on_delete=models.CASCADE)
-    status = models.ForeignKey(status, on_delete=models.CASCADE)
-    address_from = models.ForeignKey(address, related_name='addressFrom', on_delete=models.CASCADE)
-    address_to = models.ForeignKey(address, related_name='addressTo', on_delete=models.CASCADE)
-    type_of_shipment = models.ForeignKey(type_of_shipment, on_delete=models.CASCADE)
-    mode_of_contact = models.ForeignKey(mode_of_contact, on_delete=models.CASCADE)
-    type_of_collection = models.ForeignKey(type_of_collection, on_delete=models.CASCADE)
-    type_of_box = models.ForeignKey(type_of_box, on_delete=models.CASCADE)
+    fbid = models.CharField(max_length = 250 , default = 'NULL') 
+    type_of_service = models.CharField(max_length = 250 , default = 'NULL') 
+    status = models.CharField(max_length = 250 , default = 'NULL') 
+    address_from = models.CharField(max_length = 250 , default = 'NULL') 
+    address_to = models.CharField(max_length = 250 , default = 'NULL') 
+    type_of_shipment = models.CharField(max_length = 250 , default = 'NULL') 
+    mode_of_contact = models.CharField(max_length = 250 , default = 'NULL') 
+    type_of_collection = models.CharField(max_length = 250 , default = 'NULL') 
+    type_of_box = models.CharField(max_length = 250 , default = 'NULL')
+    price = models.CharField(max_length = 250 , default = 'NULL') 
 
     
 

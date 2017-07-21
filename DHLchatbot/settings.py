@@ -86,9 +86,9 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dhlbot',
-        'USER': 'dhl',
-        'PASSWORD': 'password',
+        'NAME': 'manutd',
+        'USER': 'rooney',
+        'PASSWORD': 'pass',
         'HOST': 'localhost',
         'PORT': '',
     }
