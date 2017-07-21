@@ -27,13 +27,15 @@
   window.extAsyncInit = function() {
     MessengerExtensions.getContext('447464642282184', 
   function success(result){
-    console.log(result)
+
 
   },
   function error(result){
   }
+
 );
     // the Messenger Extensions JS SDK is done loading 
+    alert(result);
   };
     
 </script>
