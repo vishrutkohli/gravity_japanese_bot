@@ -40,7 +40,7 @@ def natural_text(sender_id,text):
     except Exception as e:
                         print e
                         pass  
-               pass
+               
     text_array = []
     attachments_array = []
     for text in response['result']['fulfillment']["messages"]:
