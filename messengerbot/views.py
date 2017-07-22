@@ -227,6 +227,10 @@ def identity_confirm(request):
 def help(request):
     return HttpResponse('Your Id Has Been Confirmed')
 
+
+"""
+This function acts as a starting button when someone tries the bot for this first time .
+"""
 def greeting_text():
     post_message_url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN
    
@@ -251,7 +255,7 @@ def greeting_button():
         "thread_state":"new_thread",
         "call_to_actions":[
         {
-            "payload":"STARTING"
+            "payload":"welcome"
             }
         ]
         }
