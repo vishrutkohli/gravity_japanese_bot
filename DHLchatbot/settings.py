@@ -82,17 +82,28 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-
-DATABASES = {
+if os.getenv('BUILD_ON_TRAVIS', None):
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'manutd',
-        'USER': 'rooney',
-        'PASSWORD': 'pass',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'travis_ci_db',
+        'USER': 'travis',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        }
     }
-}
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'manutd',
+            'USER': 'rooney',
+            'PASSWORD': 'pass',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
 
 import dj_database_url
