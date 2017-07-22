@@ -1,7 +1,7 @@
 
 """
 Documentation for this module:
-This module of django all the requetss from the Facebook bot and works via a webhook to get an instant update of a message recieved and replies instantly by parsing specific conditions mentioned in this module for appropriate reply. 
+This module of django handles all the requetss from the Facebook bot and works via a webhook to get an instant update of a message recieved and replies instantly by parsing specific conditions mentioned in this module for appropriate reply. 
 """
 from django.shortcuts import render
 from django.shortcuts import render
