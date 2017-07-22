@@ -204,6 +204,8 @@ class MyChatBotView(generic.View):
         return HttpResponse()  
 
 def index(request):
+    greeting_text()
+    greeting_button()
     return HttpResponse('Hello world')
 
 def otp_form(request):
@@ -224,4 +226,56 @@ def identity_confirm(request):
 
 def help(request):
     return HttpResponse('Your Id Has Been Confirmed')
+
+
+
+
+def greeting_text():
+    post_message_url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN
+   
+    response_object =   {
+         "setting_type":"greeting",
+             "greeting":{
+             "text":"Hey Welcome to the prototype version of DHL Chat Bot"
+                }
+            }
+
+    menu_object = json.dumps(response_object)
+    status = requests.post(post_message_url,
+          headers = {"Content-Type": "application/json"},
+          data = menu_object)
+
+
+def greeting_button():
+    post_message_url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN
+    
+    response_object =   {
+        "setting_type":"call_to_actions",
+        "thread_state":"new_thread",
+        "call_to_actions":[
+        {
+            "payload":"STARTING"
+            }
+        ]
+        }
+
+    menu_object = json.dumps(response_object)
+    status = requests.post(post_message_url,
+          headers = {"Content-Type": "application/json"},
+          data = menu_object)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
