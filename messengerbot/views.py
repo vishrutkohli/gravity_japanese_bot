@@ -237,7 +237,7 @@ def greeting_text():
     response_object =   {
          "setting_type":"greeting",
              "greeting":{
-             "text":"Hey Welcome to the prototype version of DHL Chat Bot"
+             "text":"Hi {{user_first_name}}! Welcome to the prototype version of DHL Chat Bot"
                 }
             }
 
