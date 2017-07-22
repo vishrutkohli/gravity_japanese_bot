@@ -155,9 +155,10 @@ def event_name(sender_id,event):
     headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"  , "Content-Type": "application/json; charset=utf-8"}
 
     url  = "https://api.api.ai/v1/query?v=20150910"
+    
     data  = {
             
-                "event":{"name":event , "data" : {"name" : name , "box":order_instance.type_of_box , "service" :order_instance.type_of_service  , "address_from":order_instance.address_from , "address_to" : order_instance.address_to , "price" : order_instance.price}},
+                "event":{"name":event , "data" : {"name" : name , "box":order_instance.type_of_box , "service" :order_instance.type_of_service  , "address_from":order_instance.address_from , "address_to" : order_instance.address_to , "price" : order_instance.price , "box": order_instance.type_of_box}},
                 
                 "timezone": "GMT-5",
                 "lang": "en",
@@ -264,7 +265,12 @@ def database_intercept(context,response ,sender_id):
     elif context in ["door-to-door " ,"next-day"  , "3-working-day" , "5-working-day"   ]:
         print "checking database intercept"  + str(context)
         order_instance.type_of_service = str(context)
-        order_instance.save()                
+        order_instance.save()
+
+    # elif context == "box-photo-2":
+    #     print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["geo-country"])
+    #     order_instance.address_from = response['result']['contexts'][0]["parameters"]["geo-country"]
+    #     order_instance.save()                    
 
 
 

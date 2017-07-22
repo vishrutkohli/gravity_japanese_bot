@@ -244,6 +244,15 @@ class MyChatBotView(generic.View):
                         order_instance.picture_2 = message["message"]["attachments"][0]["payload"]["url"]
                         order_instance.picture_state =1
                         order_instance.save()
+                        payload = {'url1':order_instance.picture_2 , 'url2':order_instance.picture_2}
+
+                        payload = json.dumps(payload)
+                        r = requests.post("http://139.59.40.238:8080/about" , data = payload)
+                        r = json.loads(r.text)
+                        order_instance.type_of_box = r['boxName']
+                        order_instance.save() 
+
+
                               
 
                     reply = event_name(sender_id , "photo")
