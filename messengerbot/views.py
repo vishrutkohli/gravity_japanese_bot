@@ -14,11 +14,13 @@ import json
 import requests
 from api_ai import natural_text , event_name
 from messengerbot.models import user , status_code , status , type_of_service , mode_of_contact , type_of_shipment , type_of_collection , type_of_box , address , language , country , place , order
+
 def user_details(fbid):
     url = 'https://graph.facebook.com/v2.6/' + fbid + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAGE_ACCESS_TOKEN
     resp = requests.get(url=url)
     data =json.loads(resp.text)
     return data   
+    
 # api.ai webhook integration
 @csrf_exempt
 def api_ai_webhook(request):
