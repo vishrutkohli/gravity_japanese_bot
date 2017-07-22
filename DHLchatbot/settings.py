@@ -86,7 +86,7 @@ if os.getenv('BUILD_ON_TRAVIS', None):
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'travis_ci_db',
+        'NAME': 'travis_ci_test',
         'USER': 'postgres',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
