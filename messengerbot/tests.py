@@ -11,4 +11,5 @@ class TestVerifyToken(TestCase):
 		test_string="TestCase"
 		resp=self.client.get("/facebook_auth/?hub.verify_token=dhlchatbot&hub.challenge=%s"%test_string)
 		self.assertEqual(resp.status_code,200)
+		print dir(resp)
 		self.assertEqual(resp.text,test_string)
