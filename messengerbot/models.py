@@ -23,7 +23,7 @@ class user(models.Model):
         return self.fbid
 
 
-"""for all the status messages provided by dhl for eg: "The instruction data for this shipment have been provided by the sender to DHL electronically""""    
+"""for all the status messages provided by dhl for eg: The instruction data for this shipment have been provided by the sender to DHL electronically"""    
 
 class status_code(models.Model):
     status = models.CharField(max_length = 250 , default = 'NULL')   
