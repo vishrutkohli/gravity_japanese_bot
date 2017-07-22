@@ -20,7 +20,7 @@ def user_details(fbid):
     resp = requests.get(url=url)
     data =json.loads(resp.text)
     return data   
-    
+
 # api.ai webhook integration
 @csrf_exempt
 def api_ai_webhook(request):
@@ -109,8 +109,8 @@ class MyChatBotView(generic.View):
                         pass    
                     
                 except Exception as e:
-                print e
-                pass
+                    print e
+                    pass
 
                 try:
                     print "entered event_name"
