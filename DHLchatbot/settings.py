@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'messengerbot',
     'django_extensions',
+    'django.contrib.admindocs'
 )
 
 MIDDLEWARE_CLASSES = (
