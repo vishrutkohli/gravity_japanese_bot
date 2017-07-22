@@ -1,0 +1,29 @@
+language: python
+
+python:
+  - "2.7"
+
+services: postgresql
+
+env:
+  global:
+    - DJANGO_SETTINGS_MODULE="DHLchatbot.settings"
+    - PYTHONPATH="/home/travis/build/Bitcap-Developers/messenger-bot"
+    - PIP_USE_MIRRORS=true
+    - BUILD_ON_TRAVIS=true
+  matrix:
+    - DJANGO=1.7 DB=postgresql
+
+#commands to install dependencies
+install:
+  - pip install -q Django==$DJANGO
+  - pip install -q -r requirements.txt
+
+before_script:
+  - mysql -e 'create database travis_ci_db;'
+  - python manage.py syncdb --noinput
+
+#command to run the test suite
+script:
+  - python manage.py test
+
