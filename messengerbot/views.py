@@ -227,9 +227,6 @@ def identity_confirm(request):
 def help(request):
     return HttpResponse('Your Id Has Been Confirmed')
 
-
-
-
 def greeting_text():
     post_message_url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN
    
