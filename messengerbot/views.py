@@ -249,6 +249,7 @@ class MyChatBotView(generic.View):
                         payload = json.dumps(payload)
                         r = requests.post("http://139.59.40.238:8080/about" , data = payload)
                         r = json.loads(r.text)
+                        print "this is box"  + str(r['boxName'])
                         order_instance.type_of_box = r['boxName']
                         order_instance.save() 
 
