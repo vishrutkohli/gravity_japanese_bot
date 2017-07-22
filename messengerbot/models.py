@@ -2,8 +2,13 @@ from django.db import models
 
 # Create your models here.
 
+"""
+Documentation for this module:
+This module of django contains all tables of the databse .
+"""
 
-#user data of the people interacting with the bot 
+
+"""user data of the people interacting with the bot """
 
 class user(models.Model):
     mobile = models.CharField(max_length = 250 , default = 'NULL')
@@ -18,7 +23,7 @@ class user(models.Model):
         return self.fbid
 
 
-#for all the status messages provided by dhl for eg: "The instruction data for this shipment have been provided by the sender to DHL electronically"    
+"""for all the status messages provided by dhl for eg: "The instruction data for this shipment have been provided by the sender to DHL electronically""""    
 
 class status_code(models.Model):
     status = models.CharField(max_length = 250 , default = 'NULL')   
@@ -41,7 +46,7 @@ class status(models.Model):
 
 
     
-#for services like "door-to-door","next-day","2-working-day","5-working-day",
+"""for services like "door-to-door","next-day","2-working-day","5-working-day","""
 class type_of_service(models.Model):
     type_of_service = models.CharField(max_length = 250 , default = 'NULL')
 
@@ -52,7 +57,7 @@ class type_of_service(models.Model):
     
 
 
-# for mode of conact for the user like "phone " or "online"
+"""for mode of conact for the user like "phone " or "online"""
 class mode_of_contact(models.Model):
     mode_of_contact = models.CharField(max_length = 250 , default = 'NULL')
 
@@ -66,21 +71,21 @@ class type_of_shipment(models.Model):
     def __str__(self):
         return self.type_of_shipment
 
-#for type of collection of parcel "Drop Off" or "Pick up"
+"""for type of collection of parcel "Drop Off" or "Pick up"""
 class type_of_collection(models.Model):
     type_of_collection = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
         return self.type_of_collection
 
-# for type of containers like envolope , box 1 , box 2 , box 3 etc.
+"""for type of containers like envolope , box 1 , box 2 , box 3 etc."""
 class type_of_box(models.Model):
     type_of_box = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
         return self.type_of_box
 
-#  for address of the user mapped with user id . 
+""" for address of the user mapped with user id . """
 class address(models.Model):
     fbid = models.ManyToManyField(user, null = True)
     name = models.CharField(max_length = 250 , default = 'NULL')
@@ -93,7 +98,7 @@ class address(models.Model):
         return self.name
 
 
-#languages users of the bot speaks . 
+"""languages users of the bot speaks . """
 class language(models.Model):
     name = models.CharField(max_length = 250 , default = 'NULL')
     
@@ -103,12 +108,12 @@ class language(models.Model):
 
 
 
-#data of the countries DHL works in with there timezone and languages spoken
+"""data of the countries DHL works in with there timezone and languages spoken"""
 
 
 
 
-#countries DHL work in
+"""countries DHL work in"""
 class country(models.Model):
     name = models.CharField(max_length = 250 , default = 'NULL')
     
@@ -116,7 +121,7 @@ class country(models.Model):
     def __str__(self):
         return self.name                
 
-#places DHL work in 
+"""places DHL work in """
 class place(models.Model):
     name = models.CharField(max_length = 250 , default = 'NULL')
     timezone = models.CharField(max_length = 250 , default = 'NULL')
@@ -130,7 +135,7 @@ class place(models.Model):
 
 
 
-#for all the orders placed by the bot 
+"""for all the orders placed by the bot""" 
 class order(models.Model):
     date = models.CharField(max_length = 250 , default = 'NULL')
     signature_on_delivery = models.CharField(max_length = 250 , default = 'NULL') 

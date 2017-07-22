@@ -1,3 +1,8 @@
+
+"""
+Documentation for this module:
+This module of django all the requetss from the Facebook bot and works via a webhook to get an instant update of a message recieved and replies instantly by parsing specific conditions mentioned in this module for appropriate reply. 
+"""
 from django.shortcuts import render
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -9,52 +14,31 @@ import json
 import requests
 from api_ai import natural_text , event_name
 from messengerbot.models import user , status_code , status , type_of_service , mode_of_contact , type_of_shipment , type_of_collection , type_of_box , address , language , country , place , order
-
-
 def user_details(fbid):
     url = 'https://graph.facebook.com/v2.6/' + fbid + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAGE_ACCESS_TOKEN
     resp = requests.get(url=url)
     data =json.loads(resp.text)
     return data   
-
 # api.ai webhook integration
 @csrf_exempt
 def api_ai_webhook(request):
-
-
     try:
         print request.body
         x = json.loads(request.body)
         print request.body
         print json.loads(request.body)
-
-        
-
-        
-        
-
-
-
-
-            
+    
     except Exception as e:
         print e
         return HttpResponse(e)
     return HttpResponse("Post Succcessful")
-
-
 
 VERIFY_TOKEN = 'dhlchatbot'  #verify token for facebook webhook
 
 # Our facebook page acces token 
 PAGE_ACCESS_TOKEN = 'EAAGW93sNgsgBAKn6MeSmLHQQBrSFoJZBa3ZCpAZBiSDxMLXshNd7PK1dRSDO1XH4dZBnfBsZBPxsAwh9BNzHKy94aHPaL4WoqdxYvWovstiYleJZC09FEkOoenAFoWxss5NLyXGdcPz1VI46OaEW5LlTZApVlnwFzfF3nGl1wW5tgZDZD'
 
-
-
-
-
-
-#Function to invoke the facebook API to 
+#Function to invoke the facebook API to send message to the dedicated user
 def post_facebook_message(fbid,message_text):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     try:
@@ -65,7 +49,6 @@ def post_facebook_message(fbid,message_text):
         
         print e
         pass
-
     try:
         response_msg = json.dumps(message_text)
         status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
@@ -74,24 +57,21 @@ def post_facebook_message(fbid,message_text):
         
         print e
         pass        
-    
-
-
+"""
+This class handles all types of messages text , quickreplies,postback buttons , cards and images.
+"""
+#full implementation of facebook messenger api , facebook grpah api to send a recieve messages to handle user requests . 
 class MyChatBotView(generic.View):
     def get (self, request, *args, **kwargs):
         if self.request.GET['hub.verify_token'] == VERIFY_TOKEN:
             return HttpResponse(self.request.GET['hub.challenge'])
         else:
             return HttpResponse('Oops invalid token')
-
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return generic.View.dispatch(self, request, *args, **kwargs)
-
     def post(self, request, *args, **kwargs):
         incoming_message= json.loads(self.request.body.decode('utf-8'))
-        # print  incoming_message
-
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
                 print "this is message" + str(message)
@@ -106,133 +86,75 @@ class MyChatBotView(generic.View):
                     user_instance.save()
                     if message_text.lower() in "hey,hi,supp,hello".split(','):
                         reply = event_name(sender_id , "welcome")
-
                     else:
                         reply = natural_text(sender_id , message_text)
                         print "this is reply " + str(reply)
                     
-
-
-
-                    
-                    
-
-                        
-                        
-                    
-
-
-
-                    
-
-
                     try:
-                        # reply = natural_text(sender_id , message_text)
-
-                        # print "blah blah" + str(reply['text'])
+                        
                         for message in reply['text']:
                             post_facebook_message(sender_id,message )
-
                     except Exception as e:
                         print e
                         pass
                     
                     try:    
-                        # reply = natural_text(sender_id , message_text)
 
-                        # print "yoyoyoyyo"  + str(reply['quickreplies'])
                         for message in reply['attachments']:
-
-
                             post_facebook_message(sender_id, message )
-
                     except Exception as e:
                         print e
                         pass    
-
                     
-                         
-
-                     
                 except Exception as e:
-                    print e
-                    pass
+                print e
+                pass
 
                 try:
                     print "entered event_name"
-
                     message_text  = message['postback']['payload']
                     print message_text
                     reply = event_name(sender_id , message_text)
                     try:
-                        # reply = natural_text(sender_id , message_text)
-
-                        # print "blah blah" + str(reply['text'])
                         for message in reply['text']:
                             post_facebook_message(sender_id,message )
-
                     except Exception as e:
                         print e
                         pass
                     
                     try:    
-                        # reply = natural_text(sender_id , message_text)
-
-                        # print "yoyoyoyyo"  + str(reply['quickreplies'])
                         for message in reply['attachments']:
-
-
                             post_facebook_message(sender_id, message )
-
                     except Exception as e:
                         print e
-                        pass    
-                        # print "blah blah" + str(reply['text'])
+                        pass  
 
                 except Exception as e:
                     print e
                     pass
-
-
                 try:
                     print "entered event_name"
-
                     message_text  = message['message']['quick_reply']['payload']
                     print message_text
                     reply = event_name(sender_id , message_text)
                     try:
-                        # reply = natural_text(sender_id , message_text)
-
-                        # print "blah blah" + str(reply['text'])
                         for message in reply['text']:
                             post_facebook_message(sender_id,message )
-
                     except Exception as e:
                         print e
                         pass
                     
                     try:    
-                        # reply = natural_text(sender_id , message_text)
-
-                        # print "yoyoyoyyo"  + str(reply['quickreplies'])
                         for message in reply['attachments']:
-
-
                             post_facebook_message(sender_id, message )
-
                     except Exception as e:
                         print e
                         pass    
-                        # print "blah blah" + str(reply['text'])
-
                 except Exception as e:
                     print e
                     pass
                     
-
-
                 try:
-
                   if message["message"]["attachments"][0]["type"] == "image":
                     order_instance = order.objects.get_or_create(fbid = sender_id)[0]
                     if order_instance.picture_state == 1:
@@ -245,128 +167,59 @@ class MyChatBotView(generic.View):
                         order_instance.picture_state =1
                         order_instance.save()
                         payload = {'url1':order_instance.picture_2 , 'url2':order_instance.picture_2}
-
                         payload = json.dumps(payload)
                         r = requests.post("http://139.59.40.238:8080/about" , data = payload)
                         r = json.loads(r.text)
                         print "this is box"  + str(r['boxName'])
                         order_instance.type_of_box = r['boxName']
                         order_instance.save() 
-
-
                               
-
                     reply = event_name(sender_id , "photo")
                     try:
-                    # reply = natural_text(sender_id , message_text)
-
-                    # print "blah blah" + str(reply['text'])
                         for message in reply['text']:
                             post_facebook_message(sender_id,message )
-
                     except Exception as e:
                         print e
                         pass
                 
                     try:    
-                    # reply = natural_text(sender_id , message_text)
-
-                    # print "yoyoyoyyo"  + str(reply['quickreplies'])
                         for message in reply['attachments']:
-
-
                             post_facebook_message(sender_id, message )
-
                     except Exception as e:
                         print e
                         pass
                           
                           
-
                                 
-
                             
                   else:
-
                     pass                
                     
                    
-
-
                 except Exception as e:
                     print "this is image exception" + str(e)
                     pass 
-
-
-
         return HttpResponse()  
 
 def index(request):
     return HttpResponse('Hello world')
 
-
-
-
-
-
-
-
 def otp_form(request):
     return render(request,'messengerbot/otpForm.html')
-
-
 
 def receipt(request):
     return render(request,'messengerbot/smartReciept.html')
 
 def track(request):
     return render(request,'messengerbot/track.html')
-
-
+"""
+This function gets a request from javascript sdk of /otp_form(whitelisted domain for identity confirmation) to check for authenticity of the user .  
+"""
 def identity_confirm(request):
     sender_id = request.GET.get('user_id')
-
     post_facebook_message(sender_id,"thanks , your order is confirmed")
 
 
 def help(request):
     return HttpResponse('Your Id Has Been Confirmed')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
