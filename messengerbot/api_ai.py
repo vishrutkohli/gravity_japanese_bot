@@ -1,10 +1,9 @@
+# -*- coding: utf-8 -*-
+
 """
 Documentation for this module:
 This module has the full implementation and integration of api.ai handling events, queries and datapoints interception to send data. 
 """
-
-
-# -*- coding: utf-8 -*-
 import apiai as ai
 import json 
 import requests
