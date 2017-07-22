@@ -262,12 +262,4 @@ def greeting_button():
           data = menu_object)
 
 
-
-
-
-
-
-
-
-
  
