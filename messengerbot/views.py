@@ -242,7 +242,7 @@ def greeting_text():
     response_object =   {
          "setting_type":"greeting",
              "greeting":{
-             "text":"Hi {{user_first_name}}! Welcome to the prototype version of DHL Chat Bot. This bot showcase a solution to DHL user centric problems for United by HCL hackathon. USER NOTICE:This bot has price data scraped from dhl website(https://parcel.dhl.co.uk/dhl-service-point/size-and-price-guide) and will extract specific data using context like country name from addresses, users name for exact quotation giving and conversation training purposes."
+             "text":"Hi {{user_first_name}}! Welcome to the prototype version of DHL Chat Bot. This bot showcases a solution to DHL user centric problems for United by HCL Hackathon. USER NOTICE: This bot will extract specific data using context like a country name from addresses, users name for conversation training purposes and has price data scraped from dhl website(https://parcel.dhl.co.uk/dhl-service-point/size-and-price-guide) to give an exact quotation of shipping."
                 }
             }
 
