@@ -11,10 +11,11 @@ import re
 ## This is the token you can obtain from your app's dashboard
 from messengerbot.models import user , status_code , status , type_of_service , mode_of_contact , type_of_shipment , type_of_collection , type_of_box , address , language , country , place , order
 
-"""
-This function handles all types of text queries makes a request to api.ai comes up with the reply with text messages and custom payloads which are parsed and framed according to facebook and then put in a dict and passed to views.py module
-"""
+
 def natural_text(sender_id,text):
+    """
+    This function handles all types of text queries makes a request to api.ai comes up with the reply with text messages and custom payloads which are parsed and framed according to facebook and then put in a dict and passed to views.py module
+    """    
     CLIENT_ACCESS_TOKEN="518b8c00e75d4739aa323e631c8cbc1b"
     
     headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"  , "Content-Type": "application/json; charset=utf-8"}
@@ -66,10 +67,11 @@ def natural_text(sender_id,text):
     print "this is reply" + str(reply)
     return reply
 
-"""
-This function handles all types of event queries(which are invoked by payloads by facebook) makes a request to api.ai comes up with the reply with text messages and custom payloads which are parsed and framed according to facebook and then put in a dict and passed to views.py module
-"""    
+   
 def event_name(sender_id,event):
+    """
+    This function handles all types of event queries(which are invoked by payloads by facebook) makes a request to api.ai comes up with the reply with text messages and custom payloads which are parsed and framed according to facebook and then put in a dict and passed to views.py module
+    """ 
     print "entered event_name"
     CLIENT_ACCESS_TOKEN="518b8c00e75d4739aa323e631c8cbc1b"
     user_instance = user.objects.get_or_create(fbid =sender_id)[0]
@@ -128,10 +130,11 @@ def event_name(sender_id,event):
     print "this is reply" + str(reply)
     return reply
 
-"""
-This function intercepts the request from api.ai saves the data to the databse and then resumes the request so we store data of the users for booking orders and learning purposes . 
-"""    
+  
 def database_intercept(context,response ,sender_id):
+    """
+    This function intercepts the request from api.ai saves the data to the databse and then resumes the request so we store data of the users for booking orders and learning purposes . 
+    """  
     order_instance = order.objects.get_or_create(fbid = sender_id)[0]
     
     if context == "order-placing-location-from":

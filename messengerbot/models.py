@@ -8,9 +8,10 @@ This module of django contains all tables of the databse .
 """
 
 
-"""user data of the people interacting with the bot """
+
 
 class user(models.Model):
+    """user data of the people interacting with the bot """
     mobile = models.CharField(max_length = 250 , default = 'NULL')
     fbid = models.CharField(max_length = 250 , default = 'NULL')
 
@@ -23,9 +24,10 @@ class user(models.Model):
         return self.fbid
 
 
-"""for all the status messages provided by dhl for eg: The instruction data for this shipment have been provided by the sender to DHL electronically"""    
 
 class status_code(models.Model):
+    """for all the status messages provided by dhl for eg: The instruction data for this shipment have been provided by the sender to DHL electronically"""    
+
     status = models.CharField(max_length = 250 , default = 'NULL')   
 
     def __str__(self):
@@ -46,8 +48,9 @@ class status(models.Model):
 
 
     
-"""for services like "door-to-door","next-day","2-working-day","5-working-day","""
 class type_of_service(models.Model):
+    """for services like "door-to-door","next-day","2-working-day","5-working-day","""
+
     type_of_service = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
@@ -57,36 +60,41 @@ class type_of_service(models.Model):
     
 
 
-"""for mode of conact for the user like "phone " or "online"""
 class mode_of_contact(models.Model):
+    """for mode of conact for the user like "phone " or "online"""
+
     mode_of_contact = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
         return self.mode_of_contact
 
-#for shipments "Domestic" or "International"
 class type_of_shipment(models.Model):
+    #for shipments "Domestic" or "International"
+
     type_of_shipment = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
         return self.type_of_shipment
 
-"""for type of collection of parcel "Drop Off" or "Pick up"""
 class type_of_collection(models.Model):
+    """for type of collection of parcel "Drop Off" or "Pick up"""
+
     type_of_collection = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
         return self.type_of_collection
 
-"""for type of containers like envolope , box 1 , box 2 , box 3 etc."""
 class type_of_box(models.Model):
+    """for type of containers like envolope , box 1 , box 2 , box 3 etc."""
+
     type_of_box = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
         return self.type_of_box
 
-""" for address of the user mapped with user id . """
 class address(models.Model):
+    """ for address of the user mapped with user id . """
+
     fbid = models.ManyToManyField(user, null = True)
     name = models.CharField(max_length = 250 , default = 'NULL')
     address = models.CharField(max_length = 250 , default = 'NULL')
@@ -98,8 +106,11 @@ class address(models.Model):
         return self.name
 
 
-"""languages users of the bot speaks . """
+
 class language(models.Model):
+    """languages users of the bot speaks . """
+
+
     name = models.CharField(max_length = 250 , default = 'NULL')
     
 
@@ -108,21 +119,23 @@ class language(models.Model):
 
 
 
-"""data of the countries DHL works in with there timezone and languages spoken"""
 
 
 
 
-"""countries DHL work in"""
 class country(models.Model):
+    """data of the countries DHL works in with there timezone and languages spoken"""
+    """countries DHL work in"""
+
     name = models.CharField(max_length = 250 , default = 'NULL')
     
 
     def __str__(self):
         return self.name                
 
-"""places DHL work in """
 class place(models.Model):
+    """places DHL work in """
+
     name = models.CharField(max_length = 250 , default = 'NULL')
     timezone = models.CharField(max_length = 250 , default = 'NULL')
     country = models.ForeignKey(country, on_delete=models.CASCADE)
@@ -135,8 +148,9 @@ class place(models.Model):
 
 
 
-"""for all the orders placed by the bot""" 
 class order(models.Model):
+    """for all the orders placed by the bot""" 
+
     date = models.CharField(max_length = 250 , default = 'NULL')
     signature_on_delivery = models.CharField(max_length = 250 , default = 'NULL') 
     description = models.CharField(max_length = 250 , default = 'NULL') 

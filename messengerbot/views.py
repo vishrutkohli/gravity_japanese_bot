@@ -40,8 +40,9 @@ VERIFY_TOKEN = 'dhlchatbot'  #verify token for facebook webhook
 # Our facebook page acces token 
 PAGE_ACCESS_TOKEN = 'EAAGW93sNgsgBAKn6MeSmLHQQBrSFoJZBa3ZCpAZBiSDxMLXshNd7PK1dRSDO1XH4dZBnfBsZBPxsAwh9BNzHKy94aHPaL4WoqdxYvWovstiYleJZC09FEkOoenAFoWxss5NLyXGdcPz1VI46OaEW5LlTZApVlnwFzfF3nGl1wW5tgZDZD'
 
-#Function to invoke the facebook API to send message to the dedicated user
+
 def post_facebook_message(fbid,message_text):
+    """Function to invoke the facebook API to send message to the dedicated user"""
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     try:
         response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
@@ -59,11 +60,12 @@ def post_facebook_message(fbid,message_text):
         
         print e
         pass        
-"""
-This class handles all types of messages text , quickreplies,postback buttons , cards and images.
-"""
+
 #full implementation of facebook messenger api , facebook grpah api to send a recieve messages to handle user requests . 
 class MyChatBotView(generic.View):
+    """
+    This class handles all types of messages text , quickreplies,postback buttons , cards and images.
+    """
     def get (self, request, *args, **kwargs):
         if self.request.GET['hub.verify_token'] == VERIFY_TOKEN:
             return HttpResponse(self.request.GET['hub.challenge'])
@@ -212,14 +214,16 @@ def otp_form(request):
     return render(request,'messengerbot/otpForm.html')
 
 def receipt(request):
+
     return render(request,'messengerbot/smartReciept.html')
 
 def track(request):
     return render(request,'messengerbot/track.html')
-"""
-This function gets a request from javascript sdk of /otp_form(whitelisted domain for identity confirmation) to check for authenticity of the user .  
-"""
+
 def identity_confirm(request):
+    """
+    This function gets a request from javascript sdk of /otp_form(whitelisted domain for identity confirmation) to check for authenticity of the user .  
+    """
     sender_id = request.GET.get('user_id')
     post_facebook_message(sender_id,"thanks , your order is confirmed")
 
@@ -228,10 +232,11 @@ def help(request):
     return HttpResponse('Your Id Has Been Confirmed')
 
 
-"""
-This function acts as a starting button when someone tries the bot for this first time .
-"""
+
 def greeting_text():
+    """
+    This function acts as a starting button when someone tries the bot for this first time .
+    """
     post_message_url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN
    
     response_object =   {
