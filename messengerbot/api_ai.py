@@ -141,6 +141,10 @@ def database_intercept(context,response ,sender_id):
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"]["country"])
         order_instance.address_to = response['result']['contexts'][0]["parameters"]["location"]["country"]
         order_instance.save()
+    elif context == "quotation-from":
+        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"]["country"])
+        order_instance.address_to = response['result']['contexts'][0]["parameters"]["location"]["country"]
+        order_instance.save()    
     elif context == "box-size":
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"]["country"])
         order_instance.address_from = response['result']['contexts'][0]["parameters"]["location"]["country"]
