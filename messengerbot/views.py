@@ -117,7 +117,7 @@ class MyChatBotView(generic.View):
                 try:
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
-                    print "just going to  invoke natural_text"
+                    print "just going to  invoke postback"
                     user_instance = user.objects.get_or_create(fbid =sender_id)[0]
                     user_detail = user_details(sender_id)
                     name = '%s %s'%(user_detail['first_name'],user_detail['last_name'])
