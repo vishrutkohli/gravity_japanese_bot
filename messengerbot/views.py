@@ -79,6 +79,11 @@ class MyChatBotView(generic.View):
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
                 print "this is message" + str(message)
+                user_instance = user.objects.get_or_create(fbid =sender_id)[0]
+                user_detail = user_details(sender_id)
+                name = '%s %s'%(user_detail['first_name'],user_detail['last_name'])
+                user_instance.name = name
+                user_instance.save()
                 try:
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
