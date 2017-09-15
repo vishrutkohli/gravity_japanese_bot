@@ -157,6 +157,7 @@ def database_intercept(context,response ,sender_id):
         print "this is country"  + str(order_instance.address_to)
         print "this is price" + str(cost(context , order_instance.address_to))
         order_instance.save()
+
     elif context in ["door-to-door " ,"next-day"  , "3-working-day" , "5-working-day"   ]:
         print "checking database intercept"  + str(context)
         order_instance.type_of_service = str(context)
@@ -166,6 +167,10 @@ def database_intercept(context,response ,sender_id):
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["zip-code1.original"])
         pincode = response['result']['contexts'][0]["parameters"]["zip-code1.original"]
         dhl_json = requests.get("https://microservice-location.herokuapp.com/nearestDHL?zipcode= "+   pincode   +" &optionSelected=1")
+        dhl_json = json_loads("dhl_json.text")
+
+        print pincode
+        print dhl_json
         order_instance.signature_on_delivery = dhl_json['address'] + dhl_json['contactDetails'] + dhl_json['distance']
         order_instance.save()    
 
