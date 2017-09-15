@@ -82,7 +82,7 @@ def event_name(sender_id,event):
     url  = "https://api.api.ai/v1/query?v=20150910"
     data  = {
             
-                "event":{"name":event , "data" : {"name" : name , "box":order_instance.type_of_box , "nearestt":order_instance.signature_on_delivery , "service" :order_instance.type_of_service  , "address_from":order_instance.address_from , "address_to" : order_instance.address_to , "price" : order_instance.price , "box": order_instance.type_of_box}},
+                "event":{"name":event , "data" : {"name" : name , "box":order_instance.type_of_box , "nearest":order_instance.signature_on_delivery , "service" :order_instance.type_of_service  , "address_from":order_instance.address_from , "address_to" : order_instance.address_to , "price" : order_instance.price , "box": order_instance.type_of_box}},
                 
                 "timezone": "GMT-5",
                 "lang": "en",
@@ -162,7 +162,7 @@ def database_intercept(context,response ,sender_id):
         order_instance.type_of_service = str(context)
         order_instance.save()
 
-    elif context == "type-of-service":
+    elif context == "dhl-button":
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["zip-code1.original"])
         pincode = response['result']['contexts'][0]["parameters"]["zip-code1.original"]
         dhl_json = requests.get("https://microservice-location.herokuapp.com/nearestDHL?zipcode= "+   pincode   +" &optionSelected=1")
