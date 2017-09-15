@@ -166,7 +166,8 @@ def database_intercept(context,response ,sender_id):
     elif context == "dhl-button":
         print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["zip-code"])
         pincode = response['result']['contexts'][0]["parameters"]["zip-code"]
-        dhl_json = requests.get("https://microservice-location.herokuapp.com/nearestDHL?zipcode= "+   pincode   +" &optionSelected=1")
+        dhl_json = requests.get("https://microservice-location.herokuapp.com/nearestDHL?zipcode="+   pincode   +"&optionSelected=1")
+        print dhl_json.text
         dhl_json = json.loads(dhl_json.text)
 
         print pincode
