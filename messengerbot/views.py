@@ -38,7 +38,7 @@ def api_ai_webhook(request):
 VERIFY_TOKEN = 'dhlchatbot'  #verify token for facebook webhook
 
 # Our facebook page acces token 
-PAGE_ACCESS_TOKEN = 'EAAGW93sNgsgBAKn6MeSmLHQQBrSFoJZBa3ZCpAZBiSDxMLXshNd7PK1dRSDO1XH4dZBnfBsZBPxsAwh9BNzHKy94aHPaL4WoqdxYvWovstiYleJZC09FEkOoenAFoWxss5NLyXGdcPz1VI46OaEW5LlTZApVlnwFzfF3nGl1wW5tgZDZD'
+PAGE_ACCESS_TOKEN = 'EAAjPx66gOdwBAKBQBkIFZAqsz0n6YFvfIjo4XvvtETEj0PdEAlImxYrOQah7AQygUYys8Y45vm0YZAEjr2xEZCU4kw5KxiqxieZCpeGYRrErgGfrT5bqX5xRKnjXJNFLx5uEolZAEFh8ahcX3aAKXSWa6iI4AsfBBB4bgYBdLnibrnWZC59lq1'
 
 
 def post_facebook_message(fbid,message_text):

@@ -17,6 +17,7 @@ def natural_text(sender_id,text):
     This function handles all types of text queries makes a request to api.ai comes up with the reply with text messages and custom payloads which are parsed and framed according to facebook and then put in a dict and passed to views.py module
     """    
     CLIENT_ACCESS_TOKEN="518b8c00e75d4739aa323e631c8cbc1b"
+    print("entered natural text")
     
     headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"  , "Content-Type": "application/json; charset=utf-8"}
     url  = "https://api.api.ai/api/query?v=20150910"
@@ -88,7 +89,8 @@ def event_name(sender_id,event):
                 "lang": "en",
                 "sessionId": sender_id 
             }
-    data = json.dumps(data)        
+    data = json.dumps(data)  
+    print("this is data dump from event_name" + str(data))      
     response = requests.post(url, headers=headers , data = data )
     response = json.loads(response.text)
     print "this is response" + str(response)
