@@ -44,6 +44,8 @@ PAGE_ACCESS_TOKEN = 'EAAjPx66gOdwBAKBQBkIFZAqsz0n6YFvfIjo4XvvtETEj0PdEAlImxYrOQa
 
 def post_facebook_message(fbid,message_text):
     """Function to invoke the facebook API to send message to the dedicated user"""
+    translator = Translator()
+    message_text = translator.translate(message_text, dest='ja').text
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     try:
         response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
