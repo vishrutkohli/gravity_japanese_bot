@@ -84,7 +84,7 @@ class MyChatBotView(generic.View):
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
                     translator = Translator()
-                    message_text = translator.translate(message_text, dest='en')
+                    message_text = translator.translate(message_text, dest='en').text
                     print "just going to  invoke natural_text"
                     user_instance = user.objects.get_or_create(fbid =sender_id)[0]
                     user_detail = user_details(sender_id)
