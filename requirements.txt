@@ -5,5 +5,5 @@ dj-database-url
 psycopg2
 django_extensions
 whitenoise
-
+googletrans
 apiai

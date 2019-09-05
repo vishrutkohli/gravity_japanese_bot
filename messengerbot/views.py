@@ -12,6 +12,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 import json
 import requests
+from googletrans import Translator
 from api_ai import natural_text , event_name
 from messengerbot.models import user , status_code , status , type_of_service , mode_of_contact , type_of_shipment , type_of_collection , type_of_box , address , language , country , place , order
 
@@ -82,6 +83,8 @@ class MyChatBotView(generic.View):
                 try:
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
+                    translator = Translator()
+                    message_text = translator.translate(message_text, dest='en')
                     print "just going to  invoke natural_text"
                     user_instance = user.objects.get_or_create(fbid =sender_id)[0]
                     user_detail = user_details(sender_id)
