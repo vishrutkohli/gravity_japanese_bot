@@ -50,6 +50,9 @@ def post_facebook_message(fbid,message_text):
         print("#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#")
         print(message_text)
         a = ast.literal_eval(message_text)
+
+        message_text = card_transalter(message_text)
+        
         
 
     except Exception as e:
