@@ -49,7 +49,7 @@ def post_facebook_message(fbid,message_text):
     """Function to invoke the facebook API to send message to the dedicated user"""
     try:
         print("#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#")
-        a = ast.literal_eval(message_text)
+        # a = ast.literal_eval(message_text)
 
         message_text = card_transalter(message_text)
 
