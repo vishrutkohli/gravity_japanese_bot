@@ -51,13 +51,15 @@ def post_facebook_message(fbid,message_text):
     #     print("#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#")
     #     # a = ast.literal_eval(message_text)
     try:
-        message_text = card_transalter(message_text)
+        message_text = card_translater(message_text)
 
     except Exception as e:
 
+        
+        print e
         translator = Translator()
         message_text = translator.translate(message_text, dest='ja').text
-        print e
+        
     
 
     #     print("blah blah")
@@ -81,7 +83,7 @@ def post_facebook_message(fbid,message_text):
     
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     print("message_text!!!!!!!")
-    # print(message_text)
+    print(message_text)
     try:
         response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
         status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
@@ -324,7 +326,7 @@ def greeting_button():
 
 
 
-def card_transalter(a):
+def card_translater(a):
 
 
     a = str(a)
