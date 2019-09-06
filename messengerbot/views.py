@@ -138,6 +138,8 @@ class MyChatBotView(generic.View):
                     try:    
 
                         for message in reply['attachments']:
+                            print("yoloyoylo")
+                            print(message)
                             post_facebook_message(sender_id, message )
                     except Exception as e:
                         # print e
