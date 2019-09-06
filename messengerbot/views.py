@@ -66,6 +66,7 @@ def post_facebook_message(fbid,message_text):
         print e 
         translator = Translator()
         message_text = translator.translate(message_text, dest='ja').text
+        print(message_text)
 
             
 
