@@ -47,27 +47,27 @@ PAGE_ACCESS_TOKEN = 'EAAjPx66gOdwBAKBQBkIFZAqsz0n6YFvfIjo4XvvtETEj0PdEAlImxYrOQa
 
 def post_facebook_message(fbid,message_text):
     """Function to invoke the facebook API to send message to the dedicated user"""
-    try:
-        print("#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#")
-        # a = ast.literal_eval(message_text)
+    # try:
+    #     print("#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#")
+    #     # a = ast.literal_eval(message_text)
 
-        message_text = card_transalter(message_text)
+    #     message_text = card_transalter(message_text)
 
-        print("blah blah")
+    #     print("blah blah")
 
-        # print(message_text)
+    #     # print(message_text)
 
-        print("blha blah")
+    #     print("blha blah")
 
         
 
-    except Exception as e:
-        print(message_text)
-        print("$$$$$$$$$$$$$$$$$$$$$$")
+    # except Exception as e:
+    #     print(message_text)
+    #     print("$$$$$$$$$$$$$$$$$$$$$$")
          
-        translator = Translator()
-        message_text = translator.translate(message_text, dest='ja').text
-        # print(message_text)
+    #     translator = Translator()
+    #     message_text = translator.translate(message_text, dest='ja').text
+    #     # print(message_text)
 
             
 
