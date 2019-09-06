@@ -362,9 +362,9 @@ def card_transalter(a):
 
 
 
-
-    c = json.loads(c)
-    c = json.dumps(c)
+    z = ast.literal_eval(c)
+    z = json.loads(z)
+    z = json.dumps(z)
 
 
 

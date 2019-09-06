@@ -1,5 +1,6 @@
 from googletrans import Translator
 import ast
+import json
 
 
 
@@ -84,6 +85,11 @@ c = c + a[-1]
 
 
 z = ast.literal_eval(c)
+print(type(z))
+# z = json.loads(z)
+z = json.dumps(z)
+z = json.loads(z)
+
 
 print(z)
 
