@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+#! / usr / bin / env python 
+#-*-coding: utf-8-*-
 
 """
 Documentation for this module:
@@ -54,7 +55,7 @@ def post_facebook_message(fbid,message_text):
 
         print("blah blah")
 
-        print(message_text)
+        # print(message_text)
 
         print("blha blah")
 
@@ -63,10 +64,10 @@ def post_facebook_message(fbid,message_text):
     except Exception as e:
         print(message_text)
         print("$$$$$$$$$$$$$$$$$$$$$$")
-        print e 
+         
         translator = Translator()
         message_text = translator.translate(message_text, dest='ja').text
-        print(message_text)
+        # print(message_text)
 
             
 
@@ -86,7 +87,7 @@ def post_facebook_message(fbid,message_text):
         status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
         print status.json()
     except Exception as e:
-        
+        print("pipipi")
         print e
         pass        
 
