@@ -47,10 +47,15 @@ def post_facebook_message(fbid,message_text):
     """Function to invoke the facebook API to send message to the dedicated user"""
     try:
         a = ast.literal_eval(message_text)
+        print("#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#")
+        print(message_text)
 
     except Exception as e:
         translator = Translator()
         message_text = translator.translate(message_text, dest='ja').text
+        print(message_text)
+        print("$$$$$$$$$$$$$$$$$$$$$$")
+        print e 
             
 
     
