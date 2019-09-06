@@ -33,13 +33,13 @@ def natural_text(sender_id,text):
     data = json.dumps(data)
     response = requests.post(url, headers=headers , data = data )
     response = json.loads(response.text)
-    print "this is response" + str(response)
+    # print "this is response" + str(response)
     try:
         context = response['result']['contexts'][0]["name"]
-        print "this is context"  + str(context)
+        # print "this is context"  + str(context)
         database_intercept(context , response, sender_id)
     except Exception as e:
-                        print e
+                        # print e
                         pass  
                
     text_array = []
@@ -48,7 +48,7 @@ def natural_text(sender_id,text):
         try:
             text_array.append(text['speech'])
         except Exception as e:
-                        print e
+                        # print e
                         pass    
         try:
             response_object =   {
@@ -59,13 +59,13 @@ def natural_text(sender_id,text):
                             }
             attachments_array.append(response_object)
         except Exception as e:
-                        print e
+                        # print e
                         pass
    
     reply  = {"text" : text_array , "attachments":attachments_array }
     
     
-    print "this is reply" + str(reply)
+    # print "this is reply" + str(reply)
     return reply
 
    
@@ -73,7 +73,7 @@ def event_name(sender_id,event):
     """
     This function handles all types of event queries(which are invoked by payloads by facebook) makes a request to api.ai comes up with the reply with text messages and custom payloads which are parsed and framed according to facebook and then put in a dict and passed to views.py module
     """ 
-    print "entered event_name"
+    # print "entered event_name"
     CLIENT_ACCESS_TOKEN="518b8c00e75d4739aa323e631c8cbc1b"
     user_instance = user.objects.get_or_create(fbid =sender_id)[0]
     name  = user_instance.name 
@@ -93,18 +93,18 @@ def event_name(sender_id,event):
     print("this is data dump from event_name" + str(data))      
     response = requests.post(url, headers=headers , data = data )
     response = json.loads(response.text)
-    print "this is response" + str(response)
+    # print "this is response" + str(response)
     try:
         context = response['result']['contexts'][0]["name"]
         database_intercept(context , response ,sender_id )
     except Exception as e:
-                        print e
+                        # print e
                         pass
     try:
         context = response['result']['resolvedQuery']
         database_intercept(context , response ,sender_id )
     except Exception as e:
-                        print e
+                        # print e
                         pass                         
     text_array = []
     attachments_array = []
@@ -112,7 +112,7 @@ def event_name(sender_id,event):
         try:
             text_array.append(text['speech'])
         except Exception as e:
-                        print e
+                        # print e
                         pass    
         try:
             response_object =   {
@@ -123,7 +123,7 @@ def event_name(sender_id,event):
                             }
             attachments_array.append(response_object)
         except Exception as e:
-                        print e
+                        # print e
                         pass
    
     reply  = {"text" : text_array , "attachments":attachments_array }
@@ -140,40 +140,40 @@ def database_intercept(context,response ,sender_id):
     order_instance = order.objects.get_or_create(fbid = sender_id)[0]
     
     if context == "order-placing-location-from":
-        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"]["country"])
+        # print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"]["country"])
         order_instance.address_to = response['result']['contexts'][0]["parameters"]["location"]["country"]
         order_instance.save()
     elif context == "quotation-from":
-        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["geo-country"])
+        # print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["geo-country"])
         order_instance.address_to = response['result']['contexts'][0]["parameters"]["geo-country"]
         order_instance.save()    
     elif context == "box-size":
-        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"]["country"])
+        # print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["location"]["country"])
         order_instance.address_from = response['result']['contexts'][0]["parameters"]["location"]["country"]
         order_instance.save()
     elif context in ["Envelope-1" ,"Box-2"  , "Box-3" , "Box-4" , "Box-5" , "Box-6" , "Box-7"  ]:
-        print "checking database intercept"  + str(context)
+        # print "checking database intercept"  + str(context)
         order_instance.type_of_box = str(context)
         price  = cost(context , order_instance.address_to)
         order_instance.price = price.split('£')[1]
-        print "this is country"  + str(order_instance.address_to)
-        print "this is price" + str(cost(context , order_instance.address_to))
+        # print "this is country"  + str(order_instance.address_to)
+        # print "this is price" + str(cost(context , order_instance.address_to))
         order_instance.save()
 
     elif context in ["door-to-door " ,"next-day"  , "3-working-day" , "5-working-day"   ]:
-        print "checking database intercept"  + str(context)
+        # print "checking database intercept"  + str(context)
         order_instance.type_of_service = str(context)
         order_instance.save()
 
     elif context == "dhl-button":
-        print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["zip-code"])
+        # print "checking database intercept"  + str(response['result']['contexts'][0]["parameters"]["zip-code"])
         pincode = response['result']['contexts'][0]["parameters"]["zip-code"]
         dhl_json = requests.get("https://microservice-location.herokuapp.com/nearestDHL?zipcode="+   pincode   +"&optionSelected=1")
-        print dhl_json.text
+        # print dhl_json.text
         dhl_json = json.loads(dhl_json.text)
 
-        print pincode
-        print dhl_json
+        # print pincode
+        # print dhl_json
         order_instance.signature_on_delivery = dhl_json['address'] + dhl_json['contactDetails'] + dhl_json['distance']
         order_instance.save()    
 
