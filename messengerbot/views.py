@@ -13,6 +13,7 @@ from django.utils.decorators import method_decorator
 import json
 import requests
 from googletrans import Translator
+import ast
 from api_ai import natural_text , event_name
 from messengerbot.models import user , status_code , status , type_of_service , mode_of_contact , type_of_shipment , type_of_collection , type_of_box , address , language , country , place , order
 
@@ -44,8 +45,15 @@ PAGE_ACCESS_TOKEN = 'EAAjPx66gOdwBAKBQBkIFZAqsz0n6YFvfIjo4XvvtETEj0PdEAlImxYrOQa
 
 def post_facebook_message(fbid,message_text):
     """Function to invoke the facebook API to send message to the dedicated user"""
-    translator = Translator()
-    message_text = translator.translate(message_text, dest='ja').text
+    try:
+        a = ast.literal_eval(message_text)
+
+    except Exception as e:
+        translator = Translator()
+        message_text = translator.translate(message_text, dest='ja').text
+            
+
+    
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     print("message_text")
     try:
@@ -282,6 +290,54 @@ def greeting_button():
     status = requests.post(post_message_url,
           headers = {"Content-Type": "application/json"},
           data = menu_object)
+
+
+
+def card_transalter(a):
+
+
+    a = str(a)
+
+
+    a = a.split("'title': ")
+    # print(a[1])
+
+    for i in range(1, len(a)):
+        b = a[i].split("'")
+        translator = Translator()
+        b[1] =  translator.translate(b[1], dest='ja').text 
+        string = ''
+
+        for j in range(len(b)-1):
+            string = string + b[j] + "'"
+
+
+        string = string + b[-1]
+
+
+
+
+        a[i] = string
+
+
+    # for i in range(1, len(a)):
+
+
+    # print(a)
+
+    c = ''
+    for i in range(len(a)-1):
+        c = c + a[i] + "'title': "
+
+
+    c = c + a[-1]
+
+
+
+
+    return c
+
+
 
 
  
