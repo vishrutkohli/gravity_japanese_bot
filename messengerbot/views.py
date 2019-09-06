@@ -54,8 +54,8 @@ def post_facebook_message(fbid,message_text):
         message_text = card_transalter(message_text)
 
     except Exception as e:
-        
-        ranslator = Translator()
+
+        translator = Translator()
         message_text = translator.translate(message_text, dest='ja').text
         print e
     
