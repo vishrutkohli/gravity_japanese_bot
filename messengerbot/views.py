@@ -358,6 +358,11 @@ def card_transalter(a):
 
 
 
+
+
+    c - json.dumps(c)
+
+
     return c
 
 
