@@ -51,7 +51,7 @@ def post_facebook_message(fbid,message_text):
     #     print("#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#")
     #     # a = ast.literal_eval(message_text)
 
-    #     message_text = card_transalter(message_text)
+    message_text = card_transalter(message_text)
 
     #     print("blah blah")
 
