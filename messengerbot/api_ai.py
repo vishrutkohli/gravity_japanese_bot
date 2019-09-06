@@ -16,10 +16,10 @@ def natural_text(sender_id,text):
     """
     This function handles all types of text queries makes a request to api.ai comes up with the reply with text messages and custom payloads which are parsed and framed according to facebook and then put in a dict and passed to views.py module
     """    
-    CLIENT_ACCESS_TOKEN="518b8c00e75d4739aa323e631c8cbc1b"
+    CLIENT_ACCESS_TOKEN="a6dac1d6ca9c46c0920d4684fcc11086"
     print("entered natural text")
     
-    headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"  , "Content-Type": "application/json; charset=utf-8"}
+    headers = {"Authorization" : "Bearer a6dac1d6ca9c46c0920d4684fcc11086"  , "Content-Type": "application/json; charset=utf-8"}
     url  = "https://api.api.ai/api/query?v=20150910"
     data  = {
                 "query": [
@@ -74,12 +74,12 @@ def event_name(sender_id,event):
     This function handles all types of event queries(which are invoked by payloads by facebook) makes a request to api.ai comes up with the reply with text messages and custom payloads which are parsed and framed according to facebook and then put in a dict and passed to views.py module
     """ 
     # print "entered event_name"
-    CLIENT_ACCESS_TOKEN="518b8c00e75d4739aa323e631c8cbc1b"
+    CLIENT_ACCESS_TOKEN="a6dac1d6ca9c46c0920d4684fcc11086"
     user_instance = user.objects.get_or_create(fbid =sender_id)[0]
     name  = user_instance.name 
     order_instance = order.objects.get_or_create(fbid = sender_id)[0]
     
-    headers = {"Authorization" : "Bearer 518b8c00e75d4739aa323e631c8cbc1b"  , "Content-Type": "application/json; charset=utf-8"}
+    headers = {"Authorization" : "Bearer a6dac1d6ca9c46c0920d4684fcc11086"  , "Content-Type": "application/json; charset=utf-8"}
     url  = "https://api.api.ai/v1/query?v=20150910"
     data  = {
             
