@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 """
 Documentation for this module:
