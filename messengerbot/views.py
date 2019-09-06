@@ -51,15 +51,13 @@ def post_facebook_message(fbid,message_text):
     #     print("#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#")
     #     # a = ast.literal_eval(message_text)
 
-    # message_text = card_transalter(message_text)
+    message_text = card_transalter(message_text)
 
-    print("blah blah")
-    translator = Translator()
-    message_text = translator.translate(message_text, dest='ja').text
+    #     print("blah blah")
 
-    # print(message_text)
+    #     # print(message_text)
 
-    print("blha blah")
+    #     print("blha blah")
 
         
 
@@ -69,7 +67,7 @@ def post_facebook_message(fbid,message_text):
          
     #     translator = Translator()
     #     message_text = translator.translate(message_text, dest='ja').text
-        # print(message_text)
+    #     # print(message_text)
 
             
 
