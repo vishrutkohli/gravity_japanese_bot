@@ -86,6 +86,7 @@ def post_facebook_message(fbid,message_text):
         pass
     try:
         response_msg = json.dumps(message_text)
+
         status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
         print status.json()
     except Exception as e:
@@ -359,8 +360,9 @@ def card_transalter(a):
 
 
 
-
+    c = json.loads(c)
     c = json.dumps(c)
+
 
 
     return c
