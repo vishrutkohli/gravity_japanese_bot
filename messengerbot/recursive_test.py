@@ -1,4 +1,5 @@
 from googletrans import Translator
+import ast
 
 
 
@@ -77,7 +78,13 @@ c = c + a[-1]
 
 
 
-print(c)
+
+
+z = ast.literal_eval(c)
+
+print(z)
+
+
 
 
 
