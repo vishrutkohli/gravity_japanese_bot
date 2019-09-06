@@ -363,12 +363,12 @@ def card_transalter(a):
 
 
     z = ast.literal_eval(c)
-    z = json.loads(z)
-    z = json.dumps(z)
+    # z = json.loads(z)
+    # z = json.dumps(z)
 
 
 
-    return c
+    return z
 
 
 
