@@ -359,7 +359,7 @@ def card_translater(a):
 
     # z = json.dumps(z)
 
-    z = quickreply_heading_translator(z)
+    # z = quickreply_heading_translator(z)
 
 
 
