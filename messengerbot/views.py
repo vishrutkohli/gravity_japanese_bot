@@ -367,7 +367,7 @@ def card_translater(a):
 
 ####
 
-def quickreply_heading_translator():
+def quickreply_heading_translator(a):
 
     a = str(a)
     try:
