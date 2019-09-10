@@ -112,8 +112,9 @@ class MyChatBotView(generic.View):
                         for message in reply['text']:
                             translator = Translator()
                             message = translator.translate(message, dest='ja').text
-
+                            print("#!#!#!#!#!#!#!#!#!")
                             print(message)
+                            print("#!#!#!#!#!#!#!#!#!")
                             
                             post_facebook_message(sender_id,message )
                     except Exception as e:
