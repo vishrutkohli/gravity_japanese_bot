@@ -356,13 +356,68 @@ def card_translater(a):
 
     z = ast.literal_eval(c)
     # z = json.loads(z)
+
     # z = json.dumps(z)
+
+    z = quickreply_heading_translator(z)
 
 
 
     return z
 
 ####
+
+def quickreply_heading_translator():
+
+    a = str(a)
+    try:
+
+        a = a.split("'text': ")
+        # print(a[1])
+
+        for i in range(1, len(a)):
+            b = a[i].split("'")
+            translator = Translator()
+            b[1] =  translator.translate(b[1], dest='ja').text 
+            string = ''
+
+            for j in range(len(b)-1):
+                string = string + b[j] + "'"
+
+
+            string = string + b[-1]
+
+
+
+
+            a[i] = string
+
+
+        # for i in range(1, len(a)):
+
+
+        # print(a)
+
+        c = ''
+        for i in range(len(a)-1):
+            c = c + a[i] + "'text': "
+
+
+        c = c + a[-1]
+
+
+
+
+        z = ast.literal_eval(c)        
+    except Exception as e:
+        print(e)
+        pass
+
+    
+
+
+    return z
+
 
 
 
