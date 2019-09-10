@@ -113,7 +113,7 @@ class MyChatBotView(generic.View):
                             translator = Translator()
                             message = translator.translate(message, dest='ja').text
                             print("#!#!#!#!#!#!#!#!#!")
-                            print(message)
+                            # print(message)
                             print("#!#!#!#!#!#!#!#!#!")
                             
                             post_facebook_message(sender_id,message )
