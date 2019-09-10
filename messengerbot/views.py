@@ -102,7 +102,7 @@ class MyChatBotView(generic.View):
                     user_instance.name = name
                     user_instance.save()
                     if message_text.lower() in "hey,hi,supp,hello".split(','):
-                        reply = event_name(sender_id , "welcome")
+                        reply = event_name(sender_id , "WELCOME")
                     else:
                         reply = natural_text(sender_id , message_text)
                         # print "this is reply " + str(reply)
