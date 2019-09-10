@@ -91,7 +91,7 @@ def event_name(sender_id,event):
     data = json.dumps(data)        
     response = requests.post(url, headers=headers , data = data )
     response = json.loads(response.text)
-    # print "this is response" + str(response)
+    print "this is response" + str(response)
     try:
         context = response['result']['contexts'][0]["name"]
         database_intercept(context , response ,sender_id )
