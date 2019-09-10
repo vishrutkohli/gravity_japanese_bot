@@ -91,18 +91,18 @@ def event_name(sender_id,event):
     data = json.dumps(data)        
     response = requests.post(url, headers=headers , data = data )
     response = json.loads(response.text)
-    print "this is response" + str(response)
+    # print "this is response" + str(response)
     try:
         context = response['result']['contexts'][0]["name"]
         database_intercept(context , response ,sender_id )
     except Exception as e:
-                        print e
+                        # print e
                         pass
     try:
         context = response['result']['resolvedQuery']
         database_intercept(context , response ,sender_id )
     except Exception as e:
-                        print e
+                        # print e
                         pass                         
     text_array = []
     attachments_array = []
@@ -110,7 +110,7 @@ def event_name(sender_id,event):
         try:
             text_array.append(text['speech'])
         except Exception as e:
-                        print e
+                        # print e
                         pass    
         try:
             response_object =   {
@@ -121,13 +121,13 @@ def event_name(sender_id,event):
                             }
             attachments_array.append(response_object)
         except Exception as e:
-                        print e
+                        # print e
                         pass
    
     reply  = {"text" : text_array , "attachments":attachments_array }
                 
     
-    print "this is reply" + str(reply)
+    # print "this is reply" + str(reply)
     return reply
 
   
