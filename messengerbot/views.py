@@ -50,16 +50,11 @@ def post_facebook_message(fbid,message_text):
     # try:
     #     print("#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#")
     #     # a = ast.literal_eval(message_text)
-    try:
-        translator = Translator()
-        message_text = translator.translate(message_text, dest='ja').text
-        
-
-    except Exception as e:
-        message_text = card_translater(message_text)
 
         
-        print e
+
+        
+        
         
         
     
@@ -144,6 +139,9 @@ class MyChatBotView(generic.View):
                     try:
                         
                         for message in reply['text']:
+                            translator = Translator()
+                            message = translator.translate(message, dest='ja').text
+                            
                             post_facebook_message(sender_id,message )
                     except Exception as e:
                         # print e
@@ -153,7 +151,8 @@ class MyChatBotView(generic.View):
 
                         for message in reply['attachments']:
                             print("yoloyoylo")
-                            print(message)
+                            message_text = card_translater(message)
+                            # print(message)
                             post_facebook_message(sender_id, message )
                     except Exception as e:
                         # print e
@@ -177,6 +176,8 @@ class MyChatBotView(generic.View):
                     reply = event_name(sender_id , message_text)
                     try:
                         for message in reply['text']:
+                            translator = Translator()
+                            message = translator.translate(message, dest='ja').text
                             post_facebook_message(sender_id,message )
                     except Exception as e:
                         # print e
@@ -184,6 +185,7 @@ class MyChatBotView(generic.View):
                     
                     try:    
                         for message in reply['attachments']:
+                            message_text = card_translater(message)
                             post_facebook_message(sender_id, message )
                     except Exception as e:
                         # print e
@@ -199,6 +201,8 @@ class MyChatBotView(generic.View):
                     reply = event_name(sender_id , message_text)
                     try:
                         for message in reply['text']:
+                            translator = Translator()
+                            message = translator.translate(message, dest='ja').text
                             post_facebook_message(sender_id,message )
                     except Exception as e:
                         # print e
@@ -206,6 +210,7 @@ class MyChatBotView(generic.View):
                     
                     try:    
                         for message in reply['attachments']:
+                            message_text = card_translater(message)
                             post_facebook_message(sender_id, message )
                     except Exception as e:
                         # print e
@@ -237,6 +242,8 @@ class MyChatBotView(generic.View):
                     reply = event_name(sender_id , "photo")
                     try:
                         for message in reply['text']:
+                            translator = Translator()
+                            message = translator.translate(message, dest='ja').text
                             post_facebook_message(sender_id,message )
                     except Exception as e:
                         # print e
@@ -244,6 +251,7 @@ class MyChatBotView(generic.View):
                 
                     try:    
                         for message in reply['attachments']:
+                            message_text = card_translater(message)
                             post_facebook_message(sender_id, message )
                     except Exception as e:
                         # print e
