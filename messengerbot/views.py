@@ -156,7 +156,7 @@ class MyChatBotView(generic.View):
                             print("lalalalal")
                             post_facebook_message(sender_id,message )
                     except Exception as e:
-                        # print e
+                        print e
                         pass
                     
                     try:    
@@ -164,7 +164,7 @@ class MyChatBotView(generic.View):
                             message = card_translater(message)
                             post_facebook_message(sender_id, message )
                     except Exception as e:
-                        # print e
+                        print e
                         pass  
 
                 except Exception as e:
