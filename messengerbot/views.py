@@ -111,7 +111,7 @@ class MyChatBotView(generic.View):
                         
                         for message in reply['text']:
                             translator = Translator()
-                            message = translator.translate(message, dest='ja').text
+                            message = translator.translate(message, dest='en').text
                             print("#!#!#!#!#!#!#!#!#!")
                             # print(message)
                             print("#!#!#!#!#!#!#!#!#!")
