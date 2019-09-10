@@ -49,7 +49,7 @@ def post_facebook_message(fbid,message_text):
     """Function to invoke the facebook API to send message to the dedicated user"""    
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     print("message_text!!!!!!!")
-    print(message_text)
+    # print(message_text)
     print("hello hello")
     try:
         response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
