@@ -127,7 +127,7 @@ def event_name(sender_id,event):
     reply  = {"text" : text_array , "attachments":attachments_array }
                 
     
-    # print "this is reply" + str(reply)
+    print "this is reply" + str(reply)
     return reply
 
   
