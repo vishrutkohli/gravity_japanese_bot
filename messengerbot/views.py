@@ -46,41 +46,9 @@ PAGE_ACCESS_TOKEN = 'EAAjPx66gOdwBAKBQBkIFZAqsz0n6YFvfIjo4XvvtETEj0PdEAlImxYrOQa
 
 
 def post_facebook_message(fbid,message_text):
-    """Function to invoke the facebook API to send message to the dedicated user"""
-    # try:
-    #     print("#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#")
-    #     # a = ast.literal_eval(message_text)
-
-        
-
-        
-        
-        
-        
-    
-
-    #     print("blah blah")
-
-    #     # print(message_text)
-
-    #     print("blha blah")
-
-        
-
-    # except Exception as e:
-    #     print(message_text)
-    #     print("$$$$$$$$$$$$$$$$$$$$$$")
-         
-    #     translator = Translator()
-    #     message_text = translator.translate(message_text, dest='ja').text
-    #     # print(message_text)
-
-            
-
-    
+    """Function to invoke the facebook API to send message to the dedicated user"""    
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     print("message_text!!!!!!!")
-    print("")
     print(message_text)
     print("hello hello")
     try:
@@ -144,6 +112,8 @@ class MyChatBotView(generic.View):
                         for message in reply['text']:
                             translator = Translator()
                             message = translator.translate(message, dest='ja').text
+
+                            print(message)
                             
                             post_facebook_message(sender_id,message )
                     except Exception as e:
@@ -154,7 +124,7 @@ class MyChatBotView(generic.View):
 
                         for message in reply['attachments']:
                             # print("yoloyoylo")
-                            message_text = card_translater(message)
+                            message = card_translater(message)
                             # print(message)
                             post_facebook_message(sender_id, message )
                     except Exception as e:
@@ -188,7 +158,7 @@ class MyChatBotView(generic.View):
                     
                     try:    
                         for message in reply['attachments']:
-                            message_text = card_translater(message)
+                            message = card_translater(message)
                             post_facebook_message(sender_id, message )
                     except Exception as e:
                         # print e
@@ -213,7 +183,7 @@ class MyChatBotView(generic.View):
                     
                     try:    
                         for message in reply['attachments']:
-                            message_text = card_translater(message)
+                            message = card_translater(message)
                             post_facebook_message(sender_id, message )
                     except Exception as e:
                         # print e
@@ -254,7 +224,7 @@ class MyChatBotView(generic.View):
                 
                     try:    
                         for message in reply['attachments']:
-                            message_text = card_translater(message)
+                            message= card_translater(message)
                             post_facebook_message(sender_id, message )
                     except Exception as e:
                         # print e
