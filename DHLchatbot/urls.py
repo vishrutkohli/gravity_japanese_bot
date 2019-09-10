@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     # url(r'^track$',v.track),
     # url(r'^help$',v.help),
     # url(r'^identity_confirmed$',v.identity_confirm),
-    url(r'^api_ai$', v.api_ai_webhook, name='api_ai'),
+    # url(r'^api_ai$', v.api_ai_webhook, name='api_ai'),
 
 
     url(r'^admin/', include(admin.site.urls)),
