@@ -39,10 +39,6 @@ def api_ai_webhook(request):
         return HttpResponse(e)
     return HttpResponse("Post Succcessful")
 
-VERIFY_TOKEN = 'dhlchatbot'  #verify token for facebook webhook
-
-# Our facebook page acces token 
-PAGE_ACCESS_TOKEN = 'EAAjPx66gOdwBAKBQBkIFZAqsz0n6YFvfIjo4XvvtETEj0PdEAlImxYrOQah7AQygUYys8Y45vm0YZAEjr2xEZCU4kw5KxiqxieZCpeGYRrErgGfrT5bqX5xRKnjXJNFLx5uEolZAEFh8ahcX3aAKXSWa6iI4AsfBBB4bgYBdLnibrnWZC59lq1'
 
 
 def post_facebook_message(fbid,message_text):
@@ -375,10 +371,3 @@ def card_translater(a):
 
 
     return z
-
-####
-
-
-
-
- 
