@@ -152,7 +152,7 @@ class MyChatBotView(generic.View):
                         for message in reply['text']:
                             translator = Translator()
                             message = translator.translate(message, dest='ja').text
-                            print(message)
+                            # print(message)
                             print("lalalalal")
                             post_facebook_message(sender_id,message )
                     except Exception as e:
@@ -359,7 +359,7 @@ def card_translater(a):
 
     # z = json.dumps(z)
 
-    # z = quickreply_heading_translator(z)
+    z = quickreply_heading_translator(z)
 
 
 
