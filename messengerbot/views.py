@@ -282,7 +282,7 @@ def greeting_text():
     response_object =   {
          "setting_type":"greeting",
              "greeting":{
-             "text":"こんにちは \n {{user_first_name}}！ロジスティック会社ChatBotのプロトタイプバージョンへようこそ。このボットは、物流企業のユーザー中心の問題に対するソリューションを紹介します。"
+             "text":"こんにちは {{user_first_name}}！\n \n ロジスティック会社ChatBotのプロトタイプバージョンへようこそ。このボットは、物流企業のユーザー中心の問題に対するソリューションを紹介します。"
                 }
             }
 
